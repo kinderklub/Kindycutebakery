@@ -1,0 +1,2376 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Dapur Kuih Comel | Cute Bakery Adventure</title>
+  <!-- Google Fonts: Quicksand exclusively for kid-friendly preschool aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Quicksand', 'sans-serif'],
+          },
+          colors: {
+            bakeRed: '#D92638',
+            bakeDarkRed: '#A61B29',
+            bakeRuby: '#BE123C',
+            bakeRose: '#FB7185',
+            bakeSoftPink: '#FFE4E6',
+            bakeCream: '#FFFDF7',
+            bakeWarmWhite: '#FFF9F2',
+            bakeVanilla: '#FEF3C7',
+            bakeHoney: '#F59E0B',
+            bakeWood: '#854D0E',
+            bakeEspresso: '#2A1810',
+            bakeGreen: '#16A34A',
+            bakeSoftMint: '#E8F5E9',
+          },
+          boxShadow: {
+            'bake-3d': '0 6px 0 #A61B29, 0 12px 18px rgba(42, 24, 16, 0.22)',
+            'bake-card': '0 6px 0 #E2E8F0, 0 10px 16px rgba(42, 24, 16, 0.1)',
+            'bake-btn': '0 4px 0 #991B1B, 0 6px 10px rgba(42, 24, 16, 0.2)',
+            'bake-btn-active': '0 1px 0 #991B1B, 0 3px 5px rgba(42, 24, 16, 0.15)',
+            'bake-gold': '0 4px 0 #B45309, 0 6px 10px rgba(42, 24, 16, 0.2)',
+            'bake-green': '0 4px 0 #15803D, 0 6px 10px rgba(42, 24, 16, 0.2)',
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    * {
+      font-family: 'Quicksand', sans-serif !important;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      background-color: #FFF9F2;
+      color: #2A1810;
+      overscroll-behavior-y: none;
+    }
+    /* CRITICAL FIX FOR SAFARI / MOBILE FLEXBOX IMAGE EXPANSION */
+    img {
+      max-width: 100% !important;
+      max-height: 100% !important;
+      object-fit: contain !important;
+      display: block;
+    }
+    .flex, .flex-col, .flex-row {
+      min-width: 0 !important;
+      min-height: 0 !important;
+    }
+    .flex > * {
+      min-width: 0;
+    }
+    .touch-none {
+      touch-action: none !important;
+    }
+    .candy-btn {
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .candy-btn:active {
+      transform: translateY(2px);
+    }
+    @keyframes gentleWobble {
+      0%, 100% { transform: translateX(0) rotate(0deg); }
+      20% { transform: translateX(-5px) rotate(-3deg); }
+      40% { transform: translateX(5px) rotate(3deg); }
+      60% { transform: translateX(-3px) rotate(-2deg); }
+      80% { transform: translateX(3px) rotate(2deg); }
+    }
+    .animate-wobble {
+      animation: gentleWobble 0.45s ease-in-out;
+    }
+    @keyframes popBounce {
+      0%, 100% { transform: scale(1); }
+      45% { transform: scale(1.08) translateY(-4px); }
+      75% { transform: scale(0.98); }
+    }
+    .animate-celebrate {
+      animation: popBounce 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes steamFloat {
+      0% { transform: translateY(0) scaleX(1); opacity: 0.8; }
+      50% { transform: translateY(-12px) scaleX(1.15); opacity: 0.45; }
+      100% { transform: translateY(-24px) scaleX(1.3); opacity: 0; }
+    }
+    .steam-anim {
+      animation: steamFloat 2s infinite ease-out;
+    }
+    .drag-active {
+      opacity: 0.96;
+      box-shadow: 0 14px 26px rgba(166, 27, 41, 0.38) !important;
+      cursor: grabbing !important;
+    }
+  </style>
+</head>
+<body class="relative flex flex-col justify-between min-h-screen text-bakeEspresso bg-[#FFF9F2]">
+
+  <!-- DUAL-ORIENTATION HIGH RESOLUTION 3D BAKERY BACKGROUND -->
+  <div class="fixed inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+    <picture>
+      <!-- Skrin potret / menegak (smartphone & tablet) -->
+      <source media="(orientation: portrait)" srcset="https://imglink.cc/cdn/rt0jzW0nw4.jpeg">
+      <!-- Skrin landskap / melintang (desktop & laptop) -->
+      <source media="(orientation: landscape)" srcset="https://imglink.cc/cdn/z-0V2X9hYx.jpeg">
+      <!-- Default fallback -->
+      <img src="https://imglink.cc/cdn/z-0V2X9hYx.jpeg" alt="Dapur Kuih Comel Bakery Interior" class="w-full h-full object-cover object-center filter brightness-[0.96]">
+    </picture>
+    <div class="absolute inset-0 bg-gradient-to-b from-[#FFFDF7]/30 via-transparent to-[#2A1810]/30 pointer-events-none"></div>
+  </div>
+
+  <!-- TOP APP HEADER BAR -->
+  <header class="relative z-20 w-full px-3 py-2 flex items-center justify-between backdrop-blur-md bg-bakeRed/95 text-white border-b-4 border-bakeVanilla shadow-md">
+    <!-- Brand / Home Link -->
+    <div class="flex items-center space-x-2 cursor-pointer" onclick="navigateTo('home')">
+      <!-- Mini Baker Cat Avatar Icon -->
+      <div class="w-10 h-10 sm:w-11 sm:h-11 flex-shrink-0 bg-white rounded-2xl p-0.5 border-2 border-bakeVanilla shadow-bake-btn flex items-center justify-center overflow-hidden" style="width: 42px; height: 42px; max-width: 42px; max-height: 42px;">
+        <img src="https://imglink.cc/cdn/v5rmTqtIho.png" alt="Baker Cat Avatar" class="w-full h-full object-contain pointer-events-none" draggable="false">
+      </div>
+      <div>
+        <h1 id="headerTitle" class="text-base sm:text-xl font-black tracking-wide text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)] leading-tight">
+          Dapur Kuih Comel
+        </h1>
+        <p id="headerSubtitle" class="text-[10px] sm:text-xs font-bold text-bakeVanilla hidden sm:block">
+          Cute Bakery Adventure
+        </p>
+      </div>
+    </div>
+
+    <!-- Right Controls: Score, Sound, Language, Home -->
+    <div class="flex items-center space-x-1.5 sm:space-x-2.5">
+      <!-- Stars/Score Pill -->
+      <div class="flex items-center space-x-1 bg-white text-bakeDarkRed px-2.5 py-1 rounded-full font-black text-xs sm:text-sm border-2 border-bakeVanilla shadow-bake-btn">
+        <svg class="w-4 h-4 text-bakeHoney fill-current" viewBox="0 0 24 24">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        <span id="scoreDisplay">0</span>
+      </div>
+
+      <!-- Sound Toggle Button -->
+      <button id="soundToggleBtn" onclick="toggleAudio()" class="p-1.5 sm:p-2 bg-bakeDarkRed hover:bg-red-800 rounded-2xl border-2 border-white shadow-bake-btn candy-btn" aria-label="Toggle Sound">
+        <svg id="soundIconOn" class="w-5 h-5 text-white fill-current" viewBox="0 0 24 24">
+          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+        </svg>
+        <svg id="soundIconOff" class="w-5 h-5 text-white fill-current hidden" viewBox="0 0 24 24">
+          <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27l4.73 4.73H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+        </svg>
+      </button>
+
+      <!-- Language Toggle Button -->
+      <button id="langToggleBtn" onclick="toggleLanguage()" class="px-2.5 py-1 sm:px-3 sm:py-1.5 bg-bakeHoney hover:bg-amber-400 text-bakeEspresso font-black text-xs sm:text-sm rounded-2xl border-2 border-white shadow-bake-btn candy-btn">
+        <span id="langLabel">EN</span>
+      </button>
+
+      <!-- Home Icon Button -->
+      <button onclick="navigateTo('home')" class="p-1.5 sm:p-2 bg-bakeDarkRed hover:bg-red-800 rounded-2xl border-2 border-white shadow-bake-btn candy-btn" aria-label="Menu Utama">
+        <svg class="w-5 h-5 text-white fill-current" viewBox="0 0 24 24">
+          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="appContainer" class="relative z-10 flex-grow flex flex-col items-center justify-center p-3 sm:p-5 w-full max-w-4xl mx-auto">
+    
+    <!-- ============================================== -->
+    <!-- SCREEN 1: HOME SCREEN                          -->
+    <!-- ============================================== -->
+    <div id="screenHome" class="w-full flex flex-col items-center text-center space-y-4 animate-celebrate">
+      
+      <!-- Mascot Hero Card -->
+      <div class="relative bg-white/95 backdrop-blur-sm p-2 rounded-3xl shadow-bake-3d max-w-xl w-full border-4 border-bakeRed">
+        <div class="bg-gradient-to-b from-[#FFFDF7] to-[#FEE2E2] rounded-[22px] p-4 sm:p-6 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+          
+          <!-- 3D Baker Cat Mascot Hero (LOCKED SIZE) -->
+          <div id="heroCatWrapper" class="flex-shrink-0 cursor-pointer flex items-center justify-center overflow-hidden rounded-2xl" style="width: 120px; height: 120px; min-width: 120px; min-height: 120px; max-width: 120px; max-height: 120px;" onclick="meowCelebration()">
+            <img id="homeCatImg" src="https://imglink.cc/cdn/SsjDiILmdj.png" alt="Baker Cat Hero" class="w-full h-full object-contain filter drop-shadow-md transform hover:scale-105 transition" style="width: 100%; height: 100%; max-width: 120px; max-height: 120px; object-fit: contain;" draggable="false">
+          </div>
+
+          <!-- Title and Mascot Welcome -->
+          <div class="flex flex-col items-center sm:items-start text-center sm:text-left">
+            <span class="inline-block px-3 py-1 bg-bakeRed text-white font-black text-[11px] sm:text-xs uppercase tracking-wider rounded-full mb-1.5 shadow">
+              ★ Kindy Klub Preschool ★
+            </span>
+            <h2 id="homeHeroTitle" class="text-2xl sm:text-3xl md:text-4xl font-black text-bakeDarkRed leading-tight">
+              Dapur Kuih Comel
+            </h2>
+            <p id="homeHeroSubtitle" class="text-xs sm:text-sm md:text-base font-bold text-bakeEspresso mt-1 max-w-xs">
+              Jom bantu Kucing Baker buat kek yang sedap dan comel!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Grid Buttons -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3 w-full max-w-xl px-1">
+        <!-- Start Playing / Mula Main -->
+        <button onclick="navigateTo('sessionSelect')" class="sm:col-span-2 lg:col-span-3 py-3 sm:py-3.5 px-5 bg-gradient-to-r from-bakeRed to-bakeDarkRed hover:from-red-600 hover:to-red-800 text-white font-black text-lg sm:text-xl rounded-2xl border-3 border-white shadow-bake-btn candy-btn flex items-center justify-center space-x-2.5">
+          <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+            <polygon points="5,3 19,12 5,21"/>
+          </svg>
+          <span id="btnStartPlaying">Mula Main</span>
+        </button>
+
+        <!-- Cara Main (Instructions) -->
+        <button onclick="navigateTo('instructions')" class="py-2.5 px-3 bg-white hover:bg-red-50 text-bakeDarkRed font-black text-sm sm:text-base rounded-2xl border-2 border-bakeRed shadow-bake-btn candy-btn flex items-center justify-center space-x-2">
+          <svg class="w-4 h-4 fill-current text-bakeRed" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-2h2v2zm1.07-7.75l-.9.92C12.45 11.9 12 12.5 12 14h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/>
+          </svg>
+          <span id="btnInstructions">Cara Main</span>
+        </button>
+
+        <!-- Koleksi (Collection) -->
+        <button onclick="navigateTo('collection')" class="py-2.5 px-3 bg-white hover:bg-red-50 text-bakeDarkRed font-black text-sm sm:text-base rounded-2xl border-2 border-bakeRed shadow-bake-btn candy-btn flex items-center justify-center space-x-2">
+          <svg class="w-4 h-4 fill-current text-bakeRed" viewBox="0 0 24 24">
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+          </svg>
+          <span id="btnCollection">Koleksi</span>
+        </button>
+
+        <!-- Profil Pemain (Player Profile) -->
+        <button onclick="navigateTo('playerProfile')" class="py-2.5 px-3 bg-bakeHoney hover:bg-amber-400 text-bakeEspresso font-black text-sm sm:text-base rounded-2xl border-2 border-white shadow-bake-btn candy-btn flex items-center justify-center space-x-2">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+          <span id="btnProfile">Profil Pemain</span>
+        </button>
+
+        <!-- Kod Keluarga (Family Code) -->
+        <button onclick="navigateTo('familyCodeScreen')" class="py-2.5 px-3 bg-white hover:bg-red-50 text-bakeDarkRed font-black text-sm sm:text-base rounded-2xl border-2 border-bakeRed shadow-bake-btn candy-btn flex items-center justify-center space-x-2">
+          <svg class="w-4 h-4 fill-current text-bakeRed" viewBox="0 0 24 24">
+            <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+          </svg>
+          <span id="btnFamilyCode">Kod Keluarga</span>
+        </button>
+
+        <!-- Profil Murid (Student Profile) -->
+        <button onclick="navigateTo('studentProfileScreen')" class="py-2.5 px-3 bg-bakeDarkRed hover:bg-red-800 text-white font-black text-sm sm:text-base rounded-2xl border-2 border-white shadow-bake-btn candy-btn flex items-center justify-center space-x-2 sm:col-span-2 lg:col-span-1">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+          </svg>
+          <span id="btnStudentProfile">Profil Murid</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- SCREEN 2: SESSION SELECTION SCREEN             -->
+    <!-- ============================================== -->
+    <div id="screenSessionSelect" class="w-full max-w-lg flex flex-col items-center text-center space-y-4 hidden">
+      <div class="bg-white/95 backdrop-blur-sm p-5 sm:p-7 rounded-3xl border-4 border-bakeRed shadow-bake-3d w-full">
+        <h2 id="sessionSelectTitle" class="text-2xl sm:text-3xl font-black text-bakeDarkRed mb-1.5">
+          Pilih Permainan
+        </h2>
+        <p id="sessionSelectSub" class="text-bakeEspresso font-bold mb-5 text-xs sm:text-sm">
+          Berapa banyak kek yang ingin kita bakar bersama hari ini?
+        </p>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <!-- 5 Missions -->
+          <button onclick="startSession(5)" class="py-3 sm:py-4 px-3 bg-bakeRed hover:bg-red-600 text-white font-black text-lg sm:text-xl rounded-2xl border-2 border-white shadow-bake-btn candy-btn">
+            <span id="opt5Missions">5 Misi</span>
+          </button>
+          
+          <!-- 10 Missions -->
+          <button onclick="startSession(10)" class="py-3 sm:py-4 px-3 bg-bakeHoney hover:bg-amber-400 text-bakeEspresso font-black text-lg sm:text-xl rounded-2xl border-2 border-white shadow-bake-btn candy-btn">
+            <span id="opt10Missions">10 Misi</span>
+          </button>
+          
+          <!-- 20 Missions -->
+          <button onclick="startSession(20)" class="py-3 sm:py-4 px-3 bg-bakeDarkRed hover:bg-red-800 text-white font-black text-lg sm:text-xl rounded-2xl border-2 border-white shadow-bake-btn candy-btn">
+            <span id="opt20Missions">20 Misi</span>
+          </button>
+          
+          <!-- Free Play (Main Bebas) -->
+          <button onclick="startSession(9999)" class="py-3 sm:py-4 px-3 bg-bakeGreen hover:bg-green-600 text-white font-black text-lg sm:text-xl rounded-2xl border-2 border-white shadow-bake-btn candy-btn">
+            <span id="optFreePlay">Main Bebas</span>
+          </button>
+        </div>
+
+        <button onclick="navigateTo('home')" class="mt-5 py-2 px-5 bg-gray-100 hover:bg-gray-200 text-bakeEspresso font-bold text-xs sm:text-sm rounded-xl border border-gray-300 candy-btn">
+          <span id="btnBackMenuFromSession">Kembali ke Menu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- SCREEN 3: INSTRUCTIONS SCREEN                  -->
+    <!-- ============================================== -->
+    <div id="screenInstructions" class="w-full max-w-2xl flex flex-col items-center space-y-4 hidden">
+      <div class="bg-white/95 backdrop-blur-sm p-5 sm:p-7 rounded-3xl border-4 border-bakeRed shadow-bake-3d w-full">
+        <h2 id="instructTitle" class="text-2xl sm:text-3xl font-black text-bakeDarkRed mb-1.5 text-center">
+          Cara Main
+        </h2>
+        <p id="instructSub" class="text-bakeEspresso font-bold mb-5 text-center text-xs sm:text-sm">
+          Bantu Kucing Baker pilih bentuk kek, bakar kek dan hias mengikut arahan!
+        </p>
+
+        <!-- Visual Flow Cards -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-center">
+          <div class="bg-red-50 p-2.5 rounded-2xl border-2 border-bakeRed flex flex-col items-center">
+            <div class="w-14 h-14 mb-1.5 flex items-center justify-center overflow-hidden" style="width: 56px; height: 56px; max-width: 56px; max-height: 56px;">
+              <img src="https://imglink.cc/cdn/zpVjpjh_iA.png" alt="Star Cake" class="w-full h-full object-contain filter drop-shadow" draggable="false">
+            </div>
+            <span id="step1Text" class="font-black text-xs text-bakeDarkRed">1. Pilih Bentuk</span>
+          </div>
+
+          <div class="bg-red-50 p-2.5 rounded-2xl border-2 border-bakeRed flex flex-col items-center">
+            <div class="w-14 h-14 mb-1.5 flex items-center justify-center overflow-hidden" style="width: 56px; height: 56px; max-width: 56px; max-height: 56px;">
+              <img src="https://imglink.cc/cdn/tmv3M5zwCH.png" alt="Oven" class="w-full h-full object-contain filter drop-shadow" draggable="false">
+            </div>
+            <span id="step2Text" class="font-black text-xs text-bakeDarkRed">2. Bakar Kek</span>
+          </div>
+
+          <div class="bg-red-50 p-2.5 rounded-2xl border-2 border-bakeRed flex flex-col items-center">
+            <div class="w-14 h-14 mb-1.5 flex items-center justify-center overflow-hidden" style="width: 56px; height: 56px; max-width: 56px; max-height: 56px;">
+              <img src="https://imglink.cc/cdn/QWBlFucaLS.png" alt="Strawberry" class="w-full h-full object-contain filter drop-shadow" draggable="false">
+            </div>
+            <span id="step3Text" class="font-black text-xs text-bakeDarkRed">3. Letak Hiasan</span>
+          </div>
+
+          <div class="bg-red-50 p-2.5 rounded-2xl border-2 border-bakeRed flex flex-col items-center">
+            <div class="w-14 h-14 mb-1.5 flex items-center justify-center overflow-hidden" style="width: 56px; height: 56px; max-width: 56px; max-height: 56px;">
+              <img src="https://imglink.cc/cdn/yQ-J9bl5KZ.png" alt="Celebrate Cat" class="w-full h-full object-contain filter drop-shadow" draggable="false">
+            </div>
+            <span id="step4Text" class="font-black text-xs text-bakeDarkRed">4. Siap & Raikan!</span>
+          </div>
+        </div>
+
+        <div class="mt-6 flex justify-center">
+          <button onclick="navigateTo('sessionSelect')" class="py-2.5 px-6 bg-bakeRed hover:bg-red-600 text-white font-black text-base sm:text-lg rounded-2xl border-2 border-white shadow-bake-btn candy-btn">
+            <span id="btnStartFromInstruct">Mula Sekarang!</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- SCREEN 4: GAMEPLAY SCREEN                      -->
+    <!-- ============================================== -->
+    <div id="screenGame" class="w-full max-w-3xl flex flex-col items-center hidden relative">
+      
+      <!-- Top Mission Bar & Speech Bubble -->
+      <div class="w-full bg-white/95 backdrop-blur-sm border-4 border-bakeRed rounded-3xl p-2.5 sm:p-3.5 shadow-bake-card mb-2.5 flex items-center justify-between gap-2.5">
+        <!-- 3D Baker Cat Helper Head -->
+        <div class="flex items-center space-x-2.5 flex-grow">
+          <div id="catReactionMascot" class="flex-shrink-0 bg-white rounded-2xl p-0.5 border-2 border-bakeRed shadow-md transition-all flex items-center justify-center overflow-hidden" style="width: 48px; height: 48px; min-width: 48px; min-height: 48px; max-width: 48px; max-height: 48px;">
+            <img id="mascotReactionImg" src="https://imglink.cc/cdn/v5rmTqtIho.png" alt="Kucing Baker" class="w-full h-full object-contain pointer-events-none" draggable="false">
+          </div>
+          <!-- Instruction Text Banner -->
+          <div class="flex-grow">
+            <span id="missionBadge" class="text-[10px] sm:text-xs uppercase font-extrabold text-bakeRed tracking-wider block">
+              Misi 1 / 5
+            </span>
+            <h3 id="missionTextPrompt" class="text-sm sm:text-lg md:text-xl font-black text-bakeEspresso leading-snug">
+              Pilih kek bentuk bintang!
+            </h3>
+          </div>
+        </div>
+
+        <!-- Accessible Hint / Help speaker trigger -->
+        <div class="flex items-center flex-shrink-0">
+          <button onclick="speakInstruction()" class="p-2 bg-bakeHoney hover:bg-amber-400 text-bakeEspresso font-black rounded-2xl border-2 border-white shadow-bake-btn candy-btn" title="Dengar Arahan">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- PLAY AREA CONTAINER -->
+      <div id="playStageArea" class="w-full min-h-[320px] sm:min-h-[380px] bg-white/95 backdrop-blur-md border-4 border-bakeRed rounded-3xl p-3 sm:p-5 shadow-bake-3d flex flex-col items-center justify-center relative overflow-hidden">
+        
+        <!-- Connecting SVG Canvas overlay for Variation B Drag-To-Connect -->
+        <svg id="dragConnectCanvas" class="absolute inset-0 w-full h-full pointer-events-none z-30"></svg>
+
+        <!-- Notification / Friendly Feedback Pill -->
+        <div id="feedbackPill" class="absolute top-3 px-5 py-1.5 rounded-full font-black text-sm sm:text-base transition-all duration-300 opacity-0 transform -translate-y-4 z-40 shadow-lg pointer-events-none">
+          Cuba lagi!
+        </div>
+
+        <!-- Dynamic Stage Body Injected via JS -->
+        <div id="stageContent" class="w-full flex flex-col items-center justify-center">
+          <!-- Loaded dynamically -->
+        </div>
+
+      </div>
+
+      <!-- BOTTOM ACCESSIBLE CONTROL BAR -->
+      <div id="accessibleControlBar" class="w-full mt-2 p-2 sm:p-2.5 bg-white/90 rounded-2xl border-2 border-bakeRed/40 flex items-center justify-between text-xs font-bold gap-2">
+        <span id="accessNoticeText" class="text-bakeEspresso truncate">
+          Tip: Boleh seret objek atau tekan terus pilihan di bawah!
+        </span>
+        <button onclick="skipOrNextTaskCheat()" class="text-bakeDarkRed underline hover:text-red-600 flex-shrink-0">
+          <span id="accessSkipLabel">Bantuan Pilihan</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- ============================================== -->
+    <!-- SCREEN 5: RESULTS SCREEN                       -->
+    <!-- ============================================== -->
+    <div id="screenResult" class="w-full max-w-lg flex flex-col items-center text-center space-y-4 hidden animate-celebrate">
+      <div class="bg-white/95 backdrop-blur-sm p-5 sm:p-7 rounded-3xl border-4 border-bakeRed shadow-bake-3d w-full flex flex-col items-center">
+        <!-- 3D Golden Trophy & Celebrating Cat -->
+        <div class="flex items-center justify-center space-x-3 mb-2">
+          <div class="flex items-center justify-center overflow-hidden" style="width: 72px; height: 72px; max-width: 72px; max-height: 72px;">
+            <img src="https://imglink.cc/cdn/fLKJunI5ep.png" alt="Trofi Emas" class="w-full h-full object-contain filter drop-shadow-lg" draggable="false">
+          </div>
+          <div class="flex items-center justify-center overflow-hidden" style="width: 72px; height: 72px; max-width: 72px; max-height: 72px;">
+            <img src="https://imglink.cc/cdn/yQ-J9bl5KZ.png" alt="Kucing Baker Raikan" class="w-full h-full object-contain filter drop-shadow-lg animate-celebrate" draggable="false">
+          </div>
+        </div>
+
+        <h2 id="resultTitle" class="text-3xl sm:text-4xl font-black text-bakeDarkRed leading-tight">
+          Hebat!
+        </h2>
+        <p id="resultSubtitle" class="text-base sm:text-lg font-bold text-bakeEspresso mt-0.5">
+          Permainan Selesai!
+        </p>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-3 gap-2 w-full my-4">
+          <div class="bg-red-50 p-2 sm:p-2.5 rounded-2xl border-2 border-bakeRed">
+            <span id="resScoreLbl" class="text-[9px] sm:text-[11px] uppercase font-extrabold text-bakeDarkRed block">Skor</span>
+            <span id="finalScoreVal" class="text-lg sm:text-xl font-black text-bakeDarkRed">0</span>
+          </div>
+          <div class="bg-red-50 p-2 sm:p-2.5 rounded-2xl border-2 border-bakeHoney">
+            <span id="resMissionsLbl" class="text-[9px] sm:text-[11px] uppercase font-extrabold text-amber-700 block">Misi Selesai</span>
+            <span id="finalMissionsVal" class="text-lg sm:text-xl font-black text-bakeHoney">0</span>
+          </div>
+          <div class="bg-red-50 p-2 sm:p-2.5 rounded-2xl border-2 border-bakeGreen">
+            <span id="resAccLbl" class="text-[9px] sm:text-[11px] uppercase font-extrabold text-green-700 block">Ketepatan</span>
+            <span id="finalAccuracyVal" class="text-lg sm:text-xl font-black text-bakeGreen">100%</span>
+          </div>
+        </div>
+
+        <!-- Buttons: Play Again & Menu -->
+        <div class="flex flex-col sm:flex-row gap-2.5 w-full justify-center">
+          <button onclick="playAgain()" class="py-2.5 sm:py-3 px-5 bg-bakeRed hover:bg-red-600 text-white font-black text-base sm:text-lg rounded-2xl border-2 border-white shadow-bake-btn candy-btn">
+            <span id="btnPlayAgain">Main Lagi</span>
+          </button>
+          <button onclick="navigateTo('home')" class="py-2.5 sm:py-3 px-5 bg-gray-100 hover:bg-gray-200 text-bakeEspresso font-black text-base sm:text-lg rounded-2xl border border-gray-300 candy-btn">
+            <span id="btnBackToMenu">Kembali ke Menu</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- SCREEN 6: COLLECTION SCREEN                    -->
+    <!-- ============================================== -->
+    <div id="screenCollection" class="w-full max-w-3xl flex flex-col items-center hidden">
+      <div class="bg-white/95 backdrop-blur-sm p-4 sm:p-6 rounded-3xl border-4 border-bakeRed shadow-bake-3d w-full">
+        <div class="flex items-center justify-between mb-2">
+          <h2 id="collectionTitle" class="text-xl sm:text-2xl font-black text-bakeDarkRed">
+            Koleksi Dapur Comel
+          </h2>
+          <button onclick="navigateTo('home')" class="p-1.5 bg-bakeRed hover:bg-red-600 rounded-xl text-white font-bold candy-btn border border-white">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+          </button>
+        </div>
+        <p id="collectionSubtitle" class="text-xs font-bold text-bakeEspresso mb-3">
+          Lihat semua bentuk kek, buah-buahan, hiasan manis dan alatan bakeri comel!
+        </p>
+
+        <!-- Tabs: Cake Shapes, Decorations, Bakery Tools -->
+        <div class="flex space-x-1.5 mb-3 overflow-x-auto pb-1">
+          <button onclick="filterCollection('cakes')" id="tabCakes" class="px-3 py-1 bg-bakeRed text-white font-black text-xs rounded-xl border border-white shadow candy-btn">
+            Bentuk Kek
+          </button>
+          <button onclick="filterCollection('toppings')" id="tabToppings" class="px-3 py-1 bg-gray-100 text-bakeEspresso font-black text-xs rounded-xl border border-gray-300 shadow candy-btn">
+            Hiasan Manis
+          </button>
+          <button onclick="filterCollection('tools')" id="tabTools" class="px-3 py-1 bg-gray-100 text-bakeEspresso font-black text-xs rounded-xl border border-gray-300 shadow candy-btn">
+            Alatan Bakeri
+          </button>
+        </div>
+
+        <!-- Collection Gallery Grid -->
+        <div id="collectionGallery" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5 max-h-[360px] overflow-y-auto p-1">
+          <!-- Injected via JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- SCREEN 7: PLAYER PROFILE                       -->
+    <!-- ============================================== -->
+    <div id="screenPlayerProfile" class="w-full max-w-xl flex flex-col items-center hidden">
+      <div class="bg-white/95 backdrop-blur-sm p-4 sm:p-6 rounded-3xl border-4 border-bakeRed shadow-bake-3d w-full">
+        <div class="flex items-center justify-between mb-3">
+          <h2 id="profTitle" class="text-xl sm:text-2xl font-black text-bakeDarkRed">
+            Profil Pemain
+          </h2>
+          <button onclick="navigateTo('home')" class="p-1.5 bg-bakeRed rounded-xl text-white font-bold candy-btn border border-white">
+            ✕
+          </button>
+        </div>
+
+        <div class="space-y-3">
+          <!-- Student Name Banner -->
+          <div class="bg-red-50 p-3 rounded-2xl border-2 border-bakeRed flex items-center justify-between">
+            <div>
+              <span id="profStudentLbl" class="text-[10px] text-bakeDarkRed font-bold uppercase">Profil Murid</span>
+              <p id="profStudentNameDisp" class="text-base sm:text-lg font-black text-bakeEspresso">(Belum Ditetapkan)</p>
+            </div>
+            <button onclick="navigateTo('studentProfileScreen')" class="px-3 py-1 bg-bakeRed text-white font-black rounded-xl text-xs candy-btn">
+              <span id="profEditBtn">Ubah</span>
+            </button>
+          </div>
+
+          <!-- Family Code Display -->
+          <div class="bg-amber-50 p-3 rounded-2xl border-2 border-bakeHoney flex items-center justify-between">
+            <div>
+              <span id="profFamLbl" class="text-[10px] text-amber-800 font-bold uppercase">Kod Keluarga</span>
+              <p id="profFamCodeDisp" class="text-base sm:text-lg font-black text-bakeEspresso">(Kosong)</p>
+            </div>
+            <button onclick="navigateTo('familyCodeScreen')" class="px-3 py-1 bg-bakeHoney text-bakeEspresso font-black rounded-xl text-xs candy-btn">
+              <span id="profFamBtn">Ubah</span>
+            </button>
+          </div>
+
+          <!-- Stats Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center pt-1">
+            <div class="bg-gray-50 p-2 rounded-2xl border border-gray-200">
+              <span id="statPlayedLbl" class="text-[10px] text-gray-500 font-bold block">Permainan</span>
+              <span id="statPlayedVal" class="text-base sm:text-lg font-black text-bakeDarkRed">0</span>
+            </div>
+            <div class="bg-gray-50 p-2 rounded-2xl border border-gray-200">
+              <span id="statMissionsLbl" class="text-[10px] text-gray-500 font-bold block">Misi Selesai</span>
+              <span id="statMissionsVal" class="text-base sm:text-lg font-black text-bakeHoney">0</span>
+            </div>
+            <div class="bg-gray-50 p-2 rounded-2xl border border-gray-200">
+              <span id="statBestScoreLbl" class="text-[10px] text-gray-500 font-bold block">Skor Terbaik</span>
+              <span id="statBestScoreVal" class="text-base sm:text-lg font-black text-bakeGreen">0</span>
+            </div>
+            <div class="bg-gray-50 p-2 rounded-2xl border border-gray-200">
+              <span id="statAccLbl" class="text-[10px] text-gray-500 font-bold block">Ketepatan</span>
+              <span id="statAccVal" class="text-base sm:text-lg font-black text-bakeDarkRed">100%</span>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="mt-2">
+            <h4 id="recentActTitle" class="text-xs font-bold text-bakeDarkRed mb-1 uppercase">Aktiviti Terkini</h4>
+            <div id="recentActivityBox" class="bg-gray-50 p-2.5 rounded-xl max-h-28 overflow-y-auto text-xs space-y-1 text-gray-600">
+              <p id="emptyRecentText">Tiada aktiviti lagi. Jom mula main!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- SCREEN 8: STUDENT PROFILE SCREEN               -->
+    <!-- ============================================== -->
+    <div id="screenStudentProfile" class="w-full max-w-md flex flex-col items-center hidden">
+      <div class="bg-white/95 backdrop-blur-sm p-5 sm:p-6 rounded-3xl border-4 border-bakeRed shadow-bake-3d w-full">
+        <h2 id="studScreenTitle" class="text-xl sm:text-2xl font-black text-bakeDarkRed mb-1 text-center">
+          Profil Murid
+        </h2>
+        <p id="studScreenSub" class="text-bakeEspresso text-xs font-bold text-center mb-4">
+          Masukkan nama murid prasekolah anda.
+        </p>
+
+        <div class="space-y-3">
+          <div>
+            <label id="studNameLabel" class="block text-xs font-extrabold text-bakeEspresso mb-1">Nama Murid:</label>
+            <input type="text" id="studentNameInput" placeholder="Contoh: Aiman / Sara" maxlength="25" class="w-full px-3.5 py-2 rounded-2xl bg-red-50 border-2 border-bakeRed text-bakeEspresso font-bold text-base focus:outline-none focus:ring-4 focus:ring-red-200">
+          </div>
+
+          <div class="flex gap-2.5 pt-2">
+            <button onclick="saveStudentProfile()" class="flex-1 py-2.5 bg-bakeRed hover:bg-red-600 text-white font-black text-base rounded-2xl border border-white shadow-bake-btn candy-btn">
+              <span id="btnSaveStudent">Simpan</span>
+            </button>
+            <button onclick="navigateTo('playerProfile')" class="flex-1 py-2.5 bg-gray-100 hover:bg-gray-200 text-bakeEspresso font-bold text-base rounded-2xl border border-gray-300 candy-btn">
+              <span id="btnCancelStudent">Batal</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- SCREEN 9: FAMILY CODE SCREEN                   -->
+    <!-- ============================================== -->
+    <div id="screenFamilyCode" class="w-full max-w-md flex flex-col items-center hidden">
+      <div class="bg-white/95 backdrop-blur-sm p-5 sm:p-6 rounded-3xl border-4 border-bakeRed shadow-bake-3d w-full">
+        <h2 id="famScreenTitle" class="text-xl sm:text-2xl font-black text-bakeDarkRed mb-1 text-center">
+          Kod Keluarga
+        </h2>
+        <p id="famScreenSub" class="text-bakeEspresso text-xs font-bold text-center mb-4">
+          Kod keluarga adalah pilihan dan kosong secara lalai.
+        </p>
+
+        <div class="space-y-3">
+          <div>
+            <label id="famCodeLabel" class="block text-xs font-extrabold text-bakeEspresso mb-1">Kod Keluarga:</label>
+            <input type="text" id="familyCodeInput" placeholder="Contoh: KELUARGA-882" maxlength="20" class="w-full px-3.5 py-2 rounded-2xl bg-red-50 border-2 border-bakeRed text-bakeEspresso font-bold text-base focus:outline-none focus:ring-4 focus:ring-red-200 uppercase">
+          </div>
+
+          <div class="flex gap-2.5 pt-2">
+            <button onclick="saveFamilyCode()" class="flex-1 py-2.5 bg-bakeRed hover:bg-red-600 text-white font-black text-base rounded-2xl border border-white shadow-bake-btn candy-btn">
+              <span id="btnSaveFam">Simpan</span>
+            </button>
+            <button onclick="navigateTo('playerProfile')" class="flex-1 py-2.5 bg-gray-100 hover:bg-gray-200 text-bakeEspresso font-bold text-base rounded-2xl border border-gray-300 candy-btn">
+              <span id="btnCancelFam">Batal</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- STRICT FOOTER (Rule 42: Do not translate or modify) -->
+  <footer class="relative z-20 w-full py-2.5 text-center text-xs font-bold text-white bg-bakeDarkRed border-t-2 border-bakeVanilla">
+    Kinder Klub | All Rights Reserved
+  </footer>
+
+  <script>
+    /* ==============================================================
+       CENTRALIZED 3D ASSETS INVENTORY & SAFE RENDERERS
+       ============================================================== */
+    const ASSETS = {
+      cats: {
+        hero: 'https://imglink.cc/cdn/SsjDiILmdj.png',
+        celebrate: 'https://imglink.cc/cdn/yQ-J9bl5KZ.png',
+        thinking: 'https://imglink.cc/cdn/I-iGXl0UV2.png',
+        avatar: 'https://imglink.cc/cdn/v5rmTqtIho.png'
+      },
+      cakes: {
+        circle: 'https://imglink.cc/cdn/_GHeOK59ua.png',
+        star: 'https://imglink.cc/cdn/zpVjpjh_iA.png',
+        heart: 'https://imglink.cc/cdn/c09g-1qMEF.png',
+        square: 'https://imglink.cc/cdn/IUBbc0yMzM.png',
+        triangle: 'https://imglink.cc/cdn/ca5oEhbCNc.png',
+        oval: 'https://imglink.cc/cdn/0NBAG8dRv0.png'
+      },
+      toppings: {
+        strawberry: 'https://imglink.cc/cdn/QWBlFucaLS.png',
+        cherry: 'https://imglink.cc/cdn/pHmT1Tab1p.png',
+        blueberry: 'https://imglink.cc/cdn/No1QmtWD-t.png',
+        orange: 'https://imglink.cc/cdn/U3OcO8qKY9.png',
+        chocolate: 'https://imglink.cc/cdn/t_H26qvNRI.png',
+        cream: 'https://imglink.cc/cdn/Y7nd8KtR5h.png',
+        cookie: 'https://imglink.cc/cdn/uLugYDHLcv.png'
+      },
+      tools: {
+        oven: 'https://imglink.cc/cdn/tmv3M5zwCH.png',
+        bowl: 'https://imglink.cc/cdn/6lTyqmvUfi.png',
+        whisk: 'https://imglink.cc/cdn/1ch0V5p1fE.png',
+        pipingBag: 'https://imglink.cc/cdn/POIWBjGGwI.png',
+        trophy: 'https://imglink.cc/cdn/fLKJunI5ep.png'
+      }
+    };
+
+    function renderCakeImg(shape, isBaked = false, extraClass = '') {
+      const url = ASSETS.cakes[shape] || ASSETS.cakes.circle;
+      const bakedFilter = isBaked 
+        ? 'brightness(1.08) saturate(1.15) drop-shadow(0 6px 10px rgba(180,83,9,0.35))' 
+        : 'brightness(0.96) saturate(0.92) drop-shadow(0 3px 6px rgba(0,0,0,0.15))';
+      return `<img src="${url}" alt="${shape}" style="filter: ${bakedFilter}; width: 100%; height: 100%; max-width: 100%; max-height: 100%; object-fit: contain;" class="pointer-events-none select-none transition-all duration-300 ${extraClass}" draggable="false">`;
+    }
+
+    function renderToppingImg(topping, extraClass = '') {
+      const url = ASSETS.toppings[topping] || ASSETS.toppings.strawberry;
+      return `<img src="${url}" alt="${topping}" style="width: 100%; height: 100%; max-width: 100%; max-height: 100%; object-fit: contain;" class="pointer-events-none select-none filter drop-shadow-md ${extraClass}" draggable="false">`;
+    }
+
+    function renderToolImg(tool, extraClass = '') {
+      const url = ASSETS.tools[tool] || ASSETS.tools.whisk;
+      return `<img src="${url}" alt="${tool}" style="width: 100%; height: 100%; max-width: 100%; max-height: 100%; object-fit: contain;" class="pointer-events-none select-none filter drop-shadow-md ${extraClass}" draggable="false">`;
+    }
+  </script>
+
+  <script>
+    /* ==============================================================
+       BILINGUAL TRANSLATION DATA
+       ============================================================== */
+    const I18N = {
+      ms: {
+        title: "Dapur Kuih Comel",
+        subtitle: "Jom bantu Kucing Baker buat kek yang sedap dan comel!",
+        startPlaying: "Mula Main",
+        playerProfile: "Profil Pemain",
+        familyCode: "Kod Keluarga",
+        studentProfile: "Profil Murid",
+        collection: "Koleksi",
+        howToPlay: "Cara Main",
+        howToPlayDesc: "Bantu Kucing Baker pilih bentuk kek, bakar kek dan hias mengikut arahan!",
+        chooseGame: "Pilih Permainan",
+        chooseGameSub: "Berapa banyak kek yang ingin kita bakar bersama hari ini?",
+        missions5: "5 Misi",
+        missions10: "10 Misi",
+        missions20: "20 Misi",
+        freePlay: "Main Bebas",
+        backMenu: "Kembali ke Menu",
+        bakeBtn: "Bakar!",
+        tryAgain: "Cuba lagi!",
+        greatJob: "Hebat!",
+        correctFeedback: "Bagus! Tepat sekali!",
+        gameComplete: "Permainan Selesai!",
+        score: "Skor",
+        missionsDone: "Misi Selesai",
+        accuracy: "Ketepatan",
+        playAgain: "Main Lagi",
+        tipDragOrTap: "Tip: Boleh seret objek atau tekan terus pilihan di bawah!",
+        assistOption: "Bantuan Pilihan",
+        studentNamePrompt: "Nama Murid:",
+        studentPlaceholder: "Contoh: Aiman / Sara",
+        familyPlaceholder: "Contoh: KELUARGA-882",
+        studentDesc: "Masukkan nama murid prasekolah anda.",
+        familyDesc: "Kod keluarga adalah pilihan dan kosong secara lalai.",
+        save: "Simpan",
+        cancel: "Batal",
+        notSet: "(Belum Ditetapkan)",
+        blank: "(Kosong)",
+        edit: "Ubah",
+        recentActivity: "Aktiviti Terkini",
+        noActivity: "Tiada aktiviti lagi. Jom mula main!",
+        bestScore: "Skor Terbaik",
+        gamesPlayed: "Permainan",
+        shapesTitle: "Bentuk Kek",
+        toppingsTitle: "Hiasan Manis",
+        toolsTitle: "Alatan Bakeri",
+        step1: "1. Pilih Bentuk",
+        step2: "2. Bakar Kek",
+        step3: "3. Letak Hiasan",
+        step4: "4. Siap & Raikan!",
+        startNow: "Mula Sekarang!",
+        cakeCounter: "Kaunter Kek",
+        bakerOrder: "Pesanan Kucing Baker",
+        bakeMagicCakeTip: "Tekan butang Bakar untuk membakar kek ajaib!",
+        placeHere: "Letak Sini",
+        removeBtn: "Padam",
+        stepGProgress: ["1. Bentuk", "2. Bakar", "3. Hias"],
+        collectionSubtitle: "Lihat semua bentuk kek, buah-buahan, hiasan manis dan alatan bakeri comel!",
+        missionLabel: "Misi",
+        shapes: {
+          circle: "Bulat",
+          star: "Bintang",
+          heart: "Hati",
+          square: "Segi Empat",
+          triangle: "Segi Tiga",
+          oval: "Bujur"
+        },
+        toppings: {
+          strawberry: "strawberi",
+          cherry: "ceri",
+          blueberry: "beri biru",
+          orange: "hirisan oren",
+          chocolate: "coklat",
+          cream: "krim putar",
+          cookie: "biskut"
+        },
+        tools: {
+          whisk: "Pemukul Telur",
+          pipingBag: "Beg Paip Krim",
+          bowl: "Mangkuk Adunan",
+          oven: "Ketuhar Ajaib",
+          trophy: "Trofi Emas"
+        },
+        missions: {
+          pickShape: (s) => `Pilih kek bentuk ${s}!`,
+          matchShape: (s) => `Padankan kek bentuk ${s} ke pesanan!`,
+          bakeCake: (s) => `Masukkan & tekan Bakar untuk kek ${s}!`,
+          decorate: (top) => `Letak ${top} pada kek!`,
+          countDecorate: (n, top) => `Letak ${n} ${top} pada kek!`,
+          missingDecor: (top) => `Pilih hiasan ${top} yang hilang!`,
+          fullOrder: (s, n, top) => `Buat kek ${s} dengan ${n} ${top}!`
+        }
+      },
+      en: {
+        title: "Cute Bakery Adventure",
+        subtitle: "Let's help the Baker Cat make delicious and adorable cakes!",
+        startPlaying: "Start Playing",
+        playerProfile: "Player Profile",
+        familyCode: "Family Code",
+        studentProfile: "Student Profile",
+        collection: "Collection",
+        howToPlay: "How to Play",
+        howToPlayDesc: "Help the Baker Cat choose the cake shape, bake the cake and decorate it as requested!",
+        chooseGame: "Choose a Game",
+        chooseGameSub: "How many cakes would you like to bake together today?",
+        missions5: "5 Missions",
+        missions10: "10 Missions",
+        missions20: "20 Missions",
+        freePlay: "Free Play",
+        backMenu: "Back to Menu",
+        bakeBtn: "Bake!",
+        tryAgain: "Try again!",
+        greatJob: "Great Job!",
+        correctFeedback: "Super! Exactly right!",
+        gameComplete: "Game Complete!",
+        score: "Score",
+        missionsDone: "Missions Completed",
+        accuracy: "Accuracy",
+        playAgain: "Play Again",
+        tipDragOrTap: "Tip: Drag objects or tap directly below for help!",
+        assistOption: "Tap Choice Help",
+        studentNamePrompt: "Student Name:",
+        studentPlaceholder: "Example: Alex / Sara",
+        familyPlaceholder: "Example: FAMILY-882",
+        studentDesc: "Enter your preschool student's name.",
+        familyDesc: "Family code is optional and empty by default.",
+        save: "Save",
+        cancel: "Cancel",
+        notSet: "(Not Set)",
+        blank: "(Blank)",
+        edit: "Edit",
+        recentActivity: "Recent Activity",
+        noActivity: "No activity yet. Let's start baking!",
+        bestScore: "Best Score",
+        gamesPlayed: "Games Played",
+        shapesTitle: "Cake Shapes",
+        toppingsTitle: "Sweet Toppings",
+        toolsTitle: "Bakery Tools",
+        step1: "1. Choose Shape",
+        step2: "2. Bake Cake",
+        step3: "3. Add Topping",
+        step4: "4. Done & Celebrate!",
+        startNow: "Start Now!",
+        cakeCounter: "Cake Counter",
+        bakerOrder: "Baker Cat Order",
+        bakeMagicCakeTip: "Tap the Bake button to bake the magical cake!",
+        placeHere: "Place Here",
+        removeBtn: "Remove",
+        stepGProgress: ["1. Shape", "2. Bake", "3. Decorate"],
+        collectionSubtitle: "Explore all cute cake shapes, fruits, sweet toppings and bakery tools!",
+        missionLabel: "Mission",
+        shapes: {
+          circle: "circle",
+          star: "star",
+          heart: "heart",
+          square: "square",
+          triangle: "triangle",
+          oval: "oval"
+        },
+        toppings: {
+          strawberry: "strawberries",
+          cherry: "cherries",
+          blueberry: "blueberries",
+          orange: "orange slices",
+          chocolate: "chocolate",
+          cream: "cream swirls",
+          cookie: "cookies"
+        },
+        tools: {
+          whisk: "Whisk",
+          pipingBag: "Piping Bag",
+          bowl: "Mixing Bowl",
+          oven: "Magic Oven",
+          trophy: "Golden Trophy"
+        },
+        missions: {
+          pickShape: (s) => `Choose the ${s}-shaped cake!`,
+          matchShape: (s) => `Match the ${s} cake to the order!`,
+          bakeCake: (s) => `Put inside & tap Bake for the ${s} cake!`,
+          decorate: (top) => `Add ${top} onto the cake!`,
+          countDecorate: (n, top) => `Add ${n} ${top} onto the cake!`,
+          missingDecor: (top) => `Find the missing ${top} decoration!`,
+          fullOrder: (s, n, top) => `Make a ${s} cake with ${n} ${top}!`
+        }
+      }
+    };
+  </script>
+
+  <script>
+    /* ==============================================================
+       WEB AUDIO SYNTHESIZER
+       ============================================================== */
+    let audioCtx = null;
+    let soundEnabled = true;
+
+    function initAudio() {
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (AudioContext) audioCtx = new AudioContext();
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function toggleAudio() {
+      soundEnabled = !soundEnabled;
+      const onIcon = document.getElementById('soundIconOn');
+      const offIcon = document.getElementById('soundIconOff');
+      if (soundEnabled) {
+        onIcon.classList.remove('hidden');
+        offIcon.classList.add('hidden');
+        playChime(660);
+      } else {
+        onIcon.classList.add('hidden');
+        offIcon.classList.remove('hidden');
+      }
+    }
+
+    function playPop() {
+      if (!soundEnabled) return;
+      initAudio();
+      if (!audioCtx) return;
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(400, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.08);
+        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.09);
+      } catch (e) {}
+    }
+
+    function playChime(freq = 523.25) {
+      if (!soundEnabled) return;
+      initAudio();
+      if (!audioCtx) return;
+      try {
+        const notes = [freq, freq * 1.25, freq * 1.5];
+        notes.forEach((n, idx) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(n, audioCtx.currentTime + idx * 0.07);
+          gain.gain.setValueAtTime(0.2, audioCtx.currentTime + idx * 0.07);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + idx * 0.07 + 0.3);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(audioCtx.currentTime + idx * 0.07);
+          osc.stop(audioCtx.currentTime + idx * 0.07 + 0.35);
+        });
+      } catch (e) {}
+    }
+
+    function playWobbleBoing() {
+      if (!soundEnabled) return;
+      initAudio();
+      if (!audioCtx) return;
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(260, audioCtx.currentTime);
+        osc.frequency.linearRampToValueAtTime(180, audioCtx.currentTime + 0.18);
+        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.18);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.2);
+      } catch (e) {}
+    }
+
+    function playOvenDing() {
+      if (!soundEnabled) return;
+      initAudio();
+      if (!audioCtx) return;
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(1046.5, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.9);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 1.0);
+      } catch (e) {}
+    }
+  </script>
+
+  <script>
+    /* ==============================================================
+       LOCAL STORAGE & STATE MANAGEMENT
+       ============================================================== */
+    const STORAGE_KEY = 'kinderKlub_cuteBakeryAdventure_playerProfile';
+
+    let gameState = {
+      lang: 'ms',
+      sessionTarget: 5,
+      currentMissionIndex: 0,
+      score: 0,
+      correctInSession: 0,
+      totalAttemptsInSession: 0,
+      currentMission: null,
+      studentName: '',
+      familyCode: '',
+      stats: {
+        gamesPlayed: 0,
+        missionsCompleted: 0,
+        correctAnswers: 0,
+        bestScore: 0,
+        totalAttempts: 0
+      },
+      recentActivity: []
+    };
+
+    function loadSavedData() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (parsed.stats) gameState.stats = Object.assign(gameState.stats, parsed.stats);
+          if (parsed.studentName) gameState.studentName = parsed.studentName;
+          if (parsed.familyCode) gameState.familyCode = parsed.familyCode;
+          if (parsed.recentActivity) gameState.recentActivity = parsed.recentActivity;
+          if (parsed.lang) gameState.lang = parsed.lang;
+        }
+      } catch (e) {}
+    }
+
+    function saveStateData() {
+      try {
+        const toSave = {
+          lang: gameState.lang,
+          studentName: gameState.studentName,
+          familyCode: gameState.familyCode,
+          stats: gameState.stats,
+          recentActivity: gameState.recentActivity.slice(0, 10)
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
+      } catch (e) {}
+    }
+
+    function logActivity(textMs, textEn) {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      gameState.recentActivity.unshift({
+        ms: `${timeStr} - ${textMs}`,
+        en: `${timeStr} - ${textEn}`
+      });
+      if (gameState.recentActivity.length > 10) gameState.recentActivity.pop();
+      saveStateData();
+    }
+
+    const SHAPE_KEYS = ['circle', 'star', 'heart', 'square', 'triangle', 'oval'];
+    const TOPPING_KEYS = ['strawberry', 'cherry', 'blueberry', 'orange', 'chocolate', 'cream', 'cookie'];
+
+    function getRandomItem(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function shuffleArray(arr) {
+      const clone = [...arr];
+      for (let i = clone.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [clone[i], clone[j]] = [clone[j], clone[i]];
+      }
+      return clone;
+    }
+
+    function generateProceduralMission() {
+      const variations = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+      const v = getRandomItem(variations);
+
+      const targetShape = getRandomItem(SHAPE_KEYS);
+      const targetTopping = getRandomItem(TOPPING_KEYS);
+      const targetCount = Math.floor(Math.random() * 4) + 2;
+
+      const otherShapes = SHAPE_KEYS.filter(s => s !== targetShape);
+      const shapeDistractors = shuffleArray(otherShapes).slice(0, 2);
+      const shapeChoices = shuffleArray([targetShape, ...shapeDistractors]);
+
+      const otherToppings = TOPPING_KEYS.filter(t => t !== targetTopping);
+      const toppingDistractors = shuffleArray(otherToppings).slice(0, 2);
+      const toppingChoices = shuffleArray([targetTopping, ...toppingDistractors]);
+
+      return {
+        type: v,
+        shape: targetShape,
+        topping: targetTopping,
+        count: targetCount,
+        shapeChoices,
+        toppingChoices,
+        placedCount: 0,
+        baked: false,
+        completed: false
+      };
+    }
+  </script>
+
+  <script>
+    /* ==============================================================
+       SCREEN NAVIGATION & LANGUAGE
+       ============================================================== */
+    function navigateTo(screenId) {
+      playPop();
+      const screens = [
+        'screenHome',
+        'screenSessionSelect',
+        'screenInstructions',
+        'screenGame',
+        'screenResult',
+        'screenCollection',
+        'screenPlayerProfile',
+        'screenStudentProfile',
+        'screenFamilyCode'
+      ];
+      screens.forEach(s => {
+        const el = document.getElementById(s);
+        if (el) el.classList.add('hidden');
+      });
+
+      clearConnectLine();
+
+      if (screenId === 'home') {
+        document.getElementById('screenHome').classList.remove('hidden');
+      } else if (screenId === 'sessionSelect') {
+        document.getElementById('screenSessionSelect').classList.remove('hidden');
+      } else if (screenId === 'instructions') {
+        document.getElementById('screenInstructions').classList.remove('hidden');
+      } else if (screenId === 'game') {
+        document.getElementById('screenGame').classList.remove('hidden');
+      } else if (screenId === 'result') {
+        document.getElementById('screenResult').classList.remove('hidden');
+        renderResultStats();
+      } else if (screenId === 'collection') {
+        document.getElementById('screenCollection').classList.remove('hidden');
+        filterCollection(currentCollectionCategory || 'cakes');
+      } else if (screenId === 'playerProfile') {
+        document.getElementById('screenPlayerProfile').classList.remove('hidden');
+        renderProfileStats();
+      } else if (screenId === 'studentProfileScreen') {
+        document.getElementById('screenStudentProfile').classList.remove('hidden');
+        document.getElementById('studentNameInput').value = gameState.studentName;
+      } else if (screenId === 'familyCodeScreen') {
+        document.getElementById('screenFamilyCode').classList.remove('hidden');
+        document.getElementById('familyCodeInput').value = gameState.familyCode;
+      }
+
+      updateAllText();
+    }
+
+    function toggleLanguage() {
+      gameState.lang = gameState.lang === 'ms' ? 'en' : 'ms';
+      document.getElementById('langLabel').textContent = gameState.lang === 'ms' ? 'EN' : 'BM';
+      saveStateData();
+      updateAllText();
+      playPop();
+
+      if (!document.getElementById('screenGame').classList.contains('hidden') && gameState.currentMission) {
+        updateMissionPromptText();
+        renderStage(gameState.currentMission);
+      }
+
+      if (!document.getElementById('screenCollection').classList.contains('hidden')) {
+        filterCollection(currentCollectionCategory || 'cakes');
+      }
+
+      if (!document.getElementById('screenPlayerProfile').classList.contains('hidden')) {
+        renderProfileStats();
+      }
+    }
+
+    function updateAllText() {
+      const cur = I18N[gameState.lang];
+      document.getElementById('langLabel').textContent = gameState.lang === 'ms' ? 'EN' : 'BM';
+
+      document.getElementById('headerTitle').textContent = cur.title;
+      document.getElementById('headerSubtitle').textContent = cur.subtitle;
+
+      document.getElementById('homeHeroTitle').textContent = cur.title;
+      document.getElementById('homeHeroSubtitle').textContent = cur.subtitle;
+      document.getElementById('btnStartPlaying').textContent = cur.startPlaying;
+      document.getElementById('btnInstructions').textContent = cur.howToPlay;
+      document.getElementById('btnCollection').textContent = cur.collection;
+      document.getElementById('btnProfile').textContent = cur.playerProfile;
+      document.getElementById('btnFamilyCode').textContent = cur.familyCode;
+      document.getElementById('btnStudentProfile').textContent = cur.studentProfile;
+
+      document.getElementById('sessionSelectTitle').textContent = cur.chooseGame;
+      document.getElementById('sessionSelectSub').textContent = cur.chooseGameSub;
+      document.getElementById('opt5Missions').textContent = cur.missions5;
+      document.getElementById('opt10Missions').textContent = cur.missions10;
+      document.getElementById('opt20Missions').textContent = cur.missions20;
+      document.getElementById('optFreePlay').textContent = cur.freePlay;
+      document.getElementById('btnBackMenuFromSession').textContent = cur.backMenu;
+
+      document.getElementById('instructTitle').textContent = cur.howToPlay;
+      document.getElementById('instructSub').textContent = cur.howToPlayDesc;
+      document.getElementById('step1Text').textContent = cur.step1;
+      document.getElementById('step2Text').textContent = cur.step2;
+      document.getElementById('step3Text').textContent = cur.step3;
+      document.getElementById('step4Text').textContent = cur.step4;
+      document.getElementById('btnStartFromInstruct').textContent = cur.startNow;
+
+      document.getElementById('resultTitle').textContent = cur.greatJob;
+      document.getElementById('resultSubtitle').textContent = cur.gameComplete;
+      document.getElementById('resScoreLbl').textContent = cur.score;
+      document.getElementById('resMissionsLbl').textContent = cur.missionsDone;
+      document.getElementById('resAccLbl').textContent = cur.accuracy;
+      document.getElementById('btnPlayAgain').textContent = cur.playAgain;
+      document.getElementById('btnBackToMenu').textContent = cur.backMenu;
+
+      document.getElementById('collectionTitle').textContent = cur.collection;
+      document.getElementById('collectionSubtitle').textContent = cur.collectionSubtitle;
+      document.getElementById('tabCakes').textContent = cur.shapesTitle;
+      document.getElementById('tabToppings').textContent = cur.toppingsTitle;
+      document.getElementById('tabTools').textContent = cur.toolsTitle;
+
+      document.getElementById('profTitle').textContent = cur.playerProfile;
+      document.getElementById('profStudentLbl').textContent = cur.studentProfile;
+      document.getElementById('profFamLbl').textContent = cur.familyCode;
+      document.getElementById('profEditBtn').textContent = cur.edit;
+      document.getElementById('profFamBtn').textContent = cur.edit;
+      document.getElementById('statPlayedLbl').textContent = cur.gamesPlayed;
+      document.getElementById('statMissionsLbl').textContent = cur.missionsDone;
+      document.getElementById('statBestScoreLbl').textContent = cur.bestScore;
+      document.getElementById('statAccLbl').textContent = cur.accuracy;
+      document.getElementById('recentActTitle').textContent = cur.recentActivity;
+
+      document.getElementById('studScreenTitle').textContent = cur.studentProfile;
+      document.getElementById('studScreenSub').textContent = cur.studentDesc;
+      document.getElementById('studNameLabel').textContent = cur.studentNamePrompt;
+      document.getElementById('studentNameInput').placeholder = cur.studentPlaceholder;
+      document.getElementById('btnSaveStudent').textContent = cur.save;
+      document.getElementById('btnCancelStudent').textContent = cur.cancel;
+
+      document.getElementById('famScreenTitle').textContent = cur.familyCode;
+      document.getElementById('famScreenSub').textContent = cur.familyDesc;
+      document.getElementById('famCodeLabel').textContent = cur.familyCode + ":";
+      document.getElementById('familyCodeInput').placeholder = cur.familyPlaceholder;
+      document.getElementById('btnSaveFam').textContent = cur.save;
+      document.getElementById('btnCancelFam').textContent = cur.cancel;
+
+      document.getElementById('scoreDisplay').textContent = gameState.score;
+      document.getElementById('accessNoticeText').textContent = cur.tipDragOrTap;
+      document.getElementById('accessSkipLabel').textContent = cur.assistOption;
+    }
+  </script>
+
+  <script>
+    /* ==============================================================
+       SESSION LIFECYCLE & GAMEPLAY LOOP
+       ============================================================== */
+    function startSession(missionCount) {
+      playPop();
+      initAudio();
+      gameState.sessionTarget = missionCount;
+      gameState.currentMissionIndex = 0;
+      gameState.score = 0;
+      gameState.correctInSession = 0;
+      gameState.totalAttemptsInSession = 0;
+      document.getElementById('scoreDisplay').textContent = 0;
+
+      navigateTo('game');
+      loadNewMission();
+    }
+
+    function loadNewMission() {
+      if (gameState.sessionTarget !== 9999 && gameState.currentMissionIndex >= gameState.sessionTarget) {
+        completeSession();
+        return;
+      }
+
+      gameState.currentMissionIndex++;
+      gameState.currentMission = generateProceduralMission();
+      updateMissionPromptText();
+      renderStage(gameState.currentMission);
+    }
+
+    function updateMissionPromptText() {
+      const cur = I18N[gameState.lang];
+      const m = gameState.currentMission;
+      if (!m) return;
+
+      const targetLabel = gameState.sessionTarget === 9999 ? '∞' : gameState.sessionTarget;
+      document.getElementById('missionBadge').textContent = `${cur.missionLabel} ${gameState.currentMissionIndex} / ${targetLabel}`;
+
+      let text = "";
+      if (m.type === 'A') text = cur.missions.pickShape(cur.shapes[m.shape]);
+      else if (m.type === 'B') text = cur.missions.matchShape(cur.shapes[m.shape]);
+      else if (m.type === 'C') text = cur.missions.bakeCake(cur.shapes[m.shape]);
+      else if (m.type === 'D') text = cur.missions.decorate(cur.toppings[m.topping]);
+      else if (m.type === 'E') text = cur.missions.countDecorate(m.count, cur.toppings[m.topping]);
+      else if (m.type === 'F') text = cur.missions.missingDecor(cur.toppings[m.topping]);
+      else if (m.type === 'G') text = cur.missions.fullOrder(cur.shapes[m.shape], m.count, cur.toppings[m.topping]);
+      
+      document.getElementById('missionTextPrompt').textContent = text;
+    }
+
+    function renderStage(m) {
+      const container = document.getElementById('stageContent');
+      container.innerHTML = '';
+      clearConnectLine();
+
+      if (m.type === 'A') renderVariationA(container, m);
+      else if (m.type === 'B') renderVariationB(container, m);
+      else if (m.type === 'C') renderVariationC(container, m);
+      else if (m.type === 'D') renderVariationD(container, m);
+      else if (m.type === 'E') renderVariationE(container, m);
+      else if (m.type === 'F') renderVariationF(container, m);
+      else if (m.type === 'G') renderVariationG(container, m);
+    }
+
+    /* ==============================================================
+       ADVANCED POINTER-DRAG & TOUCH ENGINE (WORKS WITH TAP & DRAG)
+       ============================================================== */
+    let lastActionTimestamp = 0;
+
+    function makeDraggableAndTappable(elem, targetZone, onActionCallback) {
+      let isPointerDown = false;
+      let hasMoved = false;
+      let startX = 0, startY = 0;
+      let currentX = 0, currentY = 0;
+      let activePointerId = null;
+
+      elem.style.touchAction = 'none';
+      elem.style.userSelect = 'none';
+      elem.style.webkitUserSelect = 'none';
+
+      function onPointerDown(e) {
+        if (e.isPrimary === false || (e.button !== undefined && e.button !== 0)) return;
+        isPointerDown = true;
+        hasMoved = false;
+        activePointerId = e.pointerId;
+        startX = e.clientX;
+        startY = e.clientY;
+        currentX = e.clientX;
+        currentY = e.clientY;
+
+        try {
+          elem.setPointerCapture(e.pointerId);
+        } catch (err) {}
+
+        elem.style.transition = 'none';
+        elem.style.position = 'relative';
+        elem.style.zIndex = '999';
+      }
+
+      function onPointerMove(e) {
+        if (!isPointerDown || e.pointerId !== activePointerId) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+
+        if (!hasMoved && Math.hypot(dx, dy) > 7) {
+          hasMoved = true;
+          elem.classList.add('drag-active');
+        }
+
+        if (hasMoved) {
+          currentX = e.clientX;
+          currentY = e.clientY;
+          elem.style.transform = `translate3d(${dx}px, ${dy}px, 0) scale(1.18)`;
+        }
+      }
+
+      function onPointerUp(e) {
+        if (!isPointerDown || e.pointerId !== activePointerId) return;
+        isPointerDown = false;
+        elem.classList.remove('drag-active');
+
+        try {
+          elem.releasePointerCapture(e.pointerId);
+        } catch (err) {}
+
+        const now = Date.now();
+        if (now - lastActionTimestamp < 350) {
+          resetElementPosition(elem);
+          return;
+        }
+
+        if (!hasMoved) {
+          // DIRECT TAP / CLICK INTERACTION
+          lastActionTimestamp = now;
+          resetElementPosition(elem);
+          onActionCallback();
+          return;
+        }
+
+        // DRAG GESTURE HIT DETECTION
+        const elemRect = elem.getBoundingClientRect();
+        const targetRect = targetZone ? targetZone.getBoundingClientRect() : null;
+
+        let isSuccess = false;
+        if (targetRect) {
+          const elemCenterX = elemRect.left + elemRect.width / 2;
+          const elemCenterY = elemRect.top + elemRect.height / 2;
+          
+          // Generous hit box tolerance for preschool children
+          const padding = 55;
+          const inX = (elemCenterX >= targetRect.left - padding && elemCenterX <= targetRect.right + padding);
+          const inY = (elemCenterY >= targetRect.top - padding && elemCenterY <= targetRect.bottom + padding);
+
+          const pointerInX = (currentX >= targetRect.left - padding && currentX <= targetRect.right + padding);
+          const pointerInY = (currentY >= targetRect.top - padding && currentY <= targetRect.bottom + padding);
+
+          if ((inX && inY) || (pointerInX && pointerInY)) {
+            isSuccess = true;
+          }
+        }
+
+        resetElementPosition(elem);
+
+        if (isSuccess) {
+          lastActionTimestamp = now;
+          onActionCallback();
+        } else {
+          playWobbleBoing();
+          elem.classList.add('animate-wobble');
+          setTimeout(() => elem.classList.remove('animate-wobble'), 450);
+        }
+      }
+
+      function onPointerCancel(e) {
+        if (!isPointerDown || e.pointerId !== activePointerId) return;
+        isPointerDown = false;
+        hasMoved = false;
+        elem.classList.remove('drag-active');
+        resetElementPosition(elem);
+        try {
+          elem.releasePointerCapture(e.pointerId);
+        } catch (err) {}
+      }
+
+      elem.addEventListener('pointerdown', onPointerDown);
+      elem.addEventListener('pointermove', onPointerMove);
+      elem.addEventListener('pointerup', onPointerUp);
+      elem.addEventListener('pointercancel', onPointerCancel);
+    }
+
+    function resetElementPosition(elem) {
+      elem.style.transition = 'transform 0.22s cubic-bezier(0.2, 0.9, 0.3, 1)';
+      elem.style.transform = 'translate3d(0, 0, 0) scale(1)';
+      setTimeout(() => {
+        elem.style.position = '';
+        elem.style.zIndex = '';
+        elem.style.transition = '';
+        elem.style.transform = '';
+      }, 230);
+    }
+
+    let tempLine = null;
+
+    function enableDragConnectLine(sourceElem, targetElem, onConnectSuccess) {
+      const svgCanvas = document.getElementById('dragConnectCanvas');
+      sourceElem.style.touchAction = 'none';
+
+      function getCenter(el) {
+        const r = el.getBoundingClientRect();
+        const cr = svgCanvas.getBoundingClientRect();
+        return {
+          x: r.left + r.width / 2 - cr.left,
+          y: r.top + r.height / 2 - cr.top
+        };
+      }
+
+      let isDown = false;
+      let hasDragged = false;
+      let startPt = { x: 0, y: 0 };
+      let activePointerId = null;
+
+      function onPointerDown(e) {
+        if (e.isPrimary === false || (e.button !== undefined && e.button !== 0)) return;
+        isDown = true;
+        hasDragged = false;
+        activePointerId = e.pointerId;
+        startPt = { x: e.clientX, y: e.clientY };
+
+        try {
+          sourceElem.setPointerCapture(e.pointerId);
+        } catch (err) {}
+      }
+
+      function onPointerMove(e) {
+        if (!isDown || e.pointerId !== activePointerId) return;
+        const dist = Math.hypot(e.clientX - startPt.x, e.clientY - startPt.y);
+        if (!hasDragged && dist > 7) {
+          hasDragged = true;
+        }
+
+        if (hasDragged) {
+          const cr = svgCanvas.getBoundingClientRect();
+          const start = getCenter(sourceElem);
+          const curX = e.clientX - cr.left;
+          const curY = e.clientY - cr.top;
+
+          if (!tempLine) {
+            tempLine = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            tempLine.setAttribute('stroke', '#D92638');
+            tempLine.setAttribute('stroke-width', '4');
+            tempLine.setAttribute('stroke-linecap', 'round');
+            tempLine.setAttribute('stroke-dasharray', '6 4');
+            tempLine.setAttribute('fill', 'none');
+            svgCanvas.appendChild(tempLine);
+          }
+
+          const midX = (start.x + curX) / 2;
+          const midY = (start.y + curY) / 2 - 20;
+          tempLine.setAttribute('d', `M ${start.x} ${start.y} Q ${midX} ${midY} ${curX} ${curY}`);
+        }
+      }
+
+      function onPointerUp(e) {
+        if (!isDown || e.pointerId !== activePointerId) return;
+        isDown = false;
+        try {
+          sourceElem.releasePointerCapture(e.pointerId);
+        } catch (err) {}
+
+        const now = Date.now();
+        if (now - lastActionTimestamp < 350) {
+          clearConnectLine();
+          return;
+        }
+
+        if (!hasDragged) {
+          // Direct tap choice alternative
+          clearConnectLine();
+          lastActionTimestamp = now;
+          onConnectSuccess();
+          return;
+        }
+
+        const targetRect = targetElem.getBoundingClientRect();
+        const padding = 55;
+        const inside = (
+          e.clientX >= targetRect.left - padding &&
+          e.clientX <= targetRect.right + padding &&
+          e.clientY >= targetRect.top - padding &&
+          e.clientY <= targetRect.bottom + padding
+        );
+
+        if (inside) {
+          lastActionTimestamp = now;
+          onConnectSuccess();
+        } else {
+          clearConnectLine();
+          playWobbleBoing();
+          sourceElem.classList.add('animate-wobble');
+          setTimeout(() => sourceElem.classList.remove('animate-wobble'), 450);
+        }
+      }
+
+      function onPointerCancel(e) {
+        if (!isDown || e.pointerId !== activePointerId) return;
+        isDown = false;
+        hasDragged = false;
+        clearConnectLine();
+        try {
+          sourceElem.releasePointerCapture(e.pointerId);
+        } catch (err) {}
+      }
+
+      sourceElem.addEventListener('pointerdown', onPointerDown);
+      sourceElem.addEventListener('pointermove', onPointerMove);
+      sourceElem.addEventListener('pointerup', onPointerUp);
+      sourceElem.addEventListener('pointercancel', onPointerCancel);
+    }
+
+    function drawPermanentConnection(fromEl, toEl) {
+      const svgCanvas = document.getElementById('dragConnectCanvas');
+      clearConnectLine();
+
+      const cr = svgCanvas.getBoundingClientRect();
+      const r1 = fromEl.getBoundingClientRect();
+      const r2 = toEl.getBoundingClientRect();
+
+      const x1 = r1.left + r1.width / 2 - cr.left;
+      const y1 = r1.top + r1.height / 2 - cr.top;
+      const x2 = r2.left + r2.width / 2 - cr.left;
+      const y2 = r2.top + r2.height / 2 - cr.top;
+
+      const perm = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      perm.id = 'permLine';
+      perm.setAttribute('d', `M ${x1} ${y1} Q ${(x1 + x2) / 2} ${(y1 + y2) / 2 - 25} ${x2} ${y2}`);
+      perm.setAttribute('stroke', '#D92638');
+      perm.setAttribute('stroke-width', '5');
+      perm.setAttribute('stroke-linecap', 'round');
+      perm.setAttribute('fill', 'none');
+      svgCanvas.appendChild(perm);
+    }
+
+    function clearConnectLine() {
+      const svgCanvas = document.getElementById('dragConnectCanvas');
+      if (svgCanvas) svgCanvas.innerHTML = '';
+      tempLine = null;
+    }
+  </script>
+
+  <script>
+    /* ==============================================================
+       VARIATION STAGE RENDERERS
+       ============================================================== */
+
+    /* VARIATION A — Choose Cake Shape */
+    function renderVariationA(container, m) {
+      const cur = I18N[gameState.lang];
+      const wrapper = document.createElement('div');
+      wrapper.className = 'flex flex-col items-center space-y-4 w-full';
+
+      const dropZone = document.createElement('div');
+      dropZone.id = 'prepCounterZone';
+      dropZone.className = 'border-4 border-dashed border-bakeRed rounded-3xl bg-red-50 flex flex-col items-center justify-center p-2 relative shadow-inner';
+      dropZone.style = 'width: 160px; height: 120px; max-width: 160px; max-height: 120px;';
+      dropZone.innerHTML = `
+        <span class="text-[10px] font-black text-bakeDarkRed uppercase tracking-wider mb-1">
+          ${cur.cakeCounter}
+        </span>
+        <div id="dropZoneContent" style="width: 76px; height: 76px; max-width: 76px; max-height: 76px;" class="flex items-center justify-center opacity-30 overflow-hidden">
+          ${renderCakeImg(m.shape)}
+        </div>
+      `;
+      wrapper.appendChild(dropZone);
+
+      const choicesRow = document.createElement('div');
+      choicesRow.className = 'flex flex-wrap items-center justify-center gap-2.5 sm:gap-3.5 mt-2';
+
+      m.shapeChoices.forEach(shapeKey => {
+        const item = document.createElement('div');
+        item.className = 'bg-white rounded-2xl p-1.5 border-3 border-bakeRed shadow-bake-btn cursor-pointer candy-btn flex items-center justify-center flex-shrink-0 touch-none overflow-hidden';
+        item.style = 'width: 68px; height: 68px; min-width: 68px; min-height: 68px; max-width: 68px; max-height: 68px;';
+        item.setAttribute('data-shape', shapeKey);
+        item.innerHTML = renderCakeImg(shapeKey);
+
+        makeDraggableAndTappable(item, dropZone, () => handleShapeChoice(shapeKey, item, dropZone));
+        choicesRow.appendChild(item);
+      });
+
+      wrapper.appendChild(choicesRow);
+      container.appendChild(wrapper);
+    }
+
+    function handleShapeChoice(selectedShape, elem, dropZone) {
+      gameState.totalAttemptsInSession++;
+      if (selectedShape === gameState.currentMission.shape) {
+        playChime(587.33);
+        elem.classList.add('animate-celebrate');
+        document.getElementById('dropZoneContent').innerHTML = renderCakeImg(selectedShape);
+        document.getElementById('dropZoneContent').classList.remove('opacity-30');
+        document.getElementById('dropZoneContent').classList.add('animate-celebrate');
+        showFeedback(true);
+        registerSuccess();
+      } else {
+        playWobbleBoing();
+        elem.classList.add('animate-wobble');
+        confusedBakerCat();
+        setTimeout(() => elem.classList.remove('animate-wobble'), 450);
+        showFeedback(false);
+      }
+    }
+
+    /* VARIATION B — Match Shape (Drag-To-Connect) */
+    function renderVariationB(container, m) {
+      const cur = I18N[gameState.lang];
+      const wrapper = document.createElement('div');
+      wrapper.className = 'flex flex-col items-center space-y-4 w-full relative';
+
+      const orderCard = document.createElement('div');
+      orderCard.id = 'bakerOrderCard';
+      orderCard.className = 'bg-gradient-to-b from-bakeRed to-bakeDarkRed rounded-3xl p-2 border-3 border-bakeVanilla shadow-bake-btn flex flex-col items-center justify-center relative text-white';
+      orderCard.style = 'width: 150px; height: 110px; max-width: 150px; max-height: 110px;';
+      orderCard.innerHTML = `
+        <span class="text-[10px] font-black uppercase tracking-wider mb-1 text-bakeVanilla">
+          ${cur.bakerOrder}
+        </span>
+        <div style="width: 70px; height: 70px; max-width: 70px; max-height: 70px;" class="overflow-hidden flex items-center justify-center">
+          ${renderCakeImg(m.shape)}
+        </div>
+      `;
+      wrapper.appendChild(orderCard);
+
+      const choicesRow = document.createElement('div');
+      choicesRow.className = 'flex flex-wrap items-center justify-center gap-2.5 sm:gap-3.5 mt-3';
+
+      m.shapeChoices.forEach(shapeKey => {
+        const item = document.createElement('div');
+        item.className = 'bg-white rounded-2xl p-1.5 border-3 border-bakeRed shadow-bake-btn cursor-pointer candy-btn flex items-center justify-center flex-shrink-0 touch-none overflow-hidden';
+        item.style = 'width: 68px; height: 68px; min-width: 68px; min-height: 68px; max-width: 68px; max-height: 68px;';
+        item.setAttribute('data-shape', shapeKey);
+        item.innerHTML = renderCakeImg(shapeKey);
+
+        enableDragConnectLine(item, orderCard, () => handleConnectMatch(shapeKey, item, orderCard));
+        choicesRow.appendChild(item);
+      });
+
+      wrapper.appendChild(choicesRow);
+      container.appendChild(wrapper);
+    }
+
+    function handleConnectMatch(selectedShape, fromElem, targetElem) {
+      gameState.totalAttemptsInSession++;
+      if (selectedShape === gameState.currentMission.shape) {
+        playChime(659.25);
+        drawPermanentConnection(fromElem, targetElem);
+        targetElem.classList.add('animate-celebrate');
+        showFeedback(true);
+        registerSuccess();
+      } else {
+        playWobbleBoing();
+        fromElem.classList.add('animate-wobble');
+        confusedBakerCat();
+        setTimeout(() => fromElem.classList.remove('animate-wobble'), 450);
+        showFeedback(false);
+      }
+    }
+
+    /* VARIATION C — Bake Cake in Oven */
+    function renderVariationC(container, m) {
+      const cur = I18N[gameState.lang];
+      const wrapper = document.createElement('div');
+      wrapper.className = 'flex flex-col items-center space-y-3 w-full';
+
+      wrapper.innerHTML = `
+        <div style="width: 240px; max-width: 90vw; height: 210px;" class="relative bg-white border-4 border-bakeRed rounded-3xl p-2.5 flex flex-col items-center justify-between shadow-bake-3d overflow-hidden">
+          
+          <div id="ovenSteamEffect" class="absolute top-1.5 left-1/2 transform -translate-x-1/2 hidden flex space-x-2 pointer-events-none z-20">
+            <span class="w-2.5 h-6 bg-red-400 rounded-full steam-anim"></span>
+            <span class="w-2.5 h-6 bg-red-400 rounded-full steam-anim" style="animation-delay: 0.5s;"></span>
+            <span class="w-2.5 h-6 bg-red-400 rounded-full steam-anim" style="animation-delay: 1s;"></span>
+          </div>
+
+          <div id="ovenGlowChamber" style="width: 100%; height: 125px;" class="bg-gradient-to-b from-amber-950 to-[#2A1810] rounded-2xl border-2 border-bakeHoney flex items-center justify-center p-2 relative overflow-hidden transition-colors duration-500">
+            <div id="cakeInOven" style="width: 80px; height: 80px; max-width: 80px; max-height: 80px;" class="transition-transform duration-500 overflow-hidden flex items-center justify-center">
+              ${renderCakeImg(m.shape, false)}
+            </div>
+            <div id="ovenHeatWaves" class="absolute inset-0 bg-gradient-to-t from-red-600/40 via-yellow-500/30 to-transparent hidden"></div>
+          </div>
+
+          <div class="w-full flex items-center justify-between px-2 pt-0.5">
+            <div class="flex items-center space-x-1.5">
+              <div style="width: 28px; height: 28px; max-width: 28px; max-height: 28px;" class="overflow-hidden">
+                <img src="${ASSETS.tools.oven}" alt="Oven Icon" class="w-full h-full object-contain">
+              </div>
+              <span class="w-2.5 h-2.5 rounded-full bg-bakeGreen animate-pulse"></span>
+            </div>
+            <button id="btnBakeAction" onclick="triggerOvenBaking()" class="py-1 px-4 bg-bakeRed hover:bg-red-600 text-white font-black text-base rounded-2xl border border-white shadow-bake-btn candy-btn">
+              ${cur.bakeBtn}
+            </button>
+          </div>
+        </div>
+
+        <p class="text-xs font-bold text-bakeDarkRed text-center">
+          ${cur.bakeMagicCakeTip}
+        </p>
+      `;
+
+      container.appendChild(wrapper);
+    }
+
+    function triggerOvenBaking() {
+      const btn = document.getElementById('btnBakeAction');
+      const glowChamber = document.getElementById('ovenGlowChamber');
+      const heat = document.getElementById('ovenHeatWaves');
+      const cake = document.getElementById('cakeInOven');
+      const steam = document.getElementById('ovenSteamEffect');
+      if (!btn) return;
+
+      btn.disabled = true;
+      btn.classList.add('opacity-50');
+      playPop();
+
+      heat.classList.remove('hidden');
+      glowChamber.classList.add('bg-red-900');
+      cake.classList.add('animate-pulse');
+
+      setTimeout(() => {
+        playOvenDing();
+        heat.classList.add('hidden');
+        glowChamber.classList.remove('bg-red-900');
+        glowChamber.classList.add('bg-amber-900');
+        steam.classList.remove('hidden');
+
+        cake.innerHTML = renderCakeImg(gameState.currentMission.shape, true);
+        cake.classList.remove('animate-pulse');
+        cake.classList.add('animate-celebrate');
+
+        showFeedback(true);
+        gameState.totalAttemptsInSession++;
+        registerSuccess();
+      }, 1000);
+    }
+
+    /* VARIATION D — Decorate Cake */
+    function renderVariationD(container, m) {
+      const cur = I18N[gameState.lang];
+      const wrapper = document.createElement('div');
+      wrapper.className = 'flex flex-col items-center space-y-3 w-full';
+
+      const cakeTarget = document.createElement('div');
+      cakeTarget.id = 'bigDecorateCake';
+      cakeTarget.style = 'width: 140px; height: 140px; min-width: 140px; min-height: 140px; max-width: 140px; max-height: 140px;';
+      cakeTarget.className = 'relative flex items-center justify-center flex-shrink-0';
+      cakeTarget.innerHTML = `
+        <div class="w-full h-full flex items-center justify-center overflow-hidden">
+          ${renderCakeImg(m.shape)}
+        </div>
+        <div id="cakeSnapZone" style="width: 56px; height: 56px; max-width: 56px; max-height: 56px;" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-2 border-dashed border-bakeRed rounded-full flex items-center justify-center bg-red-100/70 shadow-inner p-1 overflow-hidden">
+          <span class="text-[9px] font-black text-bakeDarkRed uppercase tracking-wider text-center">
+            ${cur.placeHere}
+          </span>
+        </div>
+      `;
+      wrapper.appendChild(cakeTarget);
+
+      const toppingTray = document.createElement('div');
+      toppingTray.className = 'flex flex-wrap items-center justify-center gap-2 p-2 bg-red-50 rounded-2xl border-2 border-bakeRed max-w-sm';
+
+      m.toppingChoices.forEach(tKey => {
+        const item = document.createElement('div');
+        item.style = 'width: 58px; height: 58px; min-width: 58px; min-height: 58px; max-width: 58px; max-height: 58px;';
+        item.className = 'bg-white rounded-2xl p-1 border-2 border-bakeRed shadow-bake-btn cursor-pointer candy-btn flex items-center justify-center flex-shrink-0 touch-none overflow-hidden';
+        item.setAttribute('data-topping', tKey);
+        item.innerHTML = renderToppingImg(tKey);
+
+        makeDraggableAndTappable(item, cakeTarget, () => handleToppingPlacement(tKey, item, cakeTarget));
+        toppingTray.appendChild(item);
+      });
+
+      wrapper.appendChild(toppingTray);
+      container.appendChild(wrapper);
+    }
+
+    function handleToppingPlacement(toppingKey, elem, cakeTarget) {
+      gameState.totalAttemptsInSession++;
+      if (toppingKey === gameState.currentMission.topping) {
+        playChime(660);
+        const snapZone = document.getElementById('cakeSnapZone');
+        if (snapZone) {
+          snapZone.innerHTML = renderToppingImg(toppingKey);
+          snapZone.classList.remove('border-dashed');
+          snapZone.classList.add('animate-celebrate');
+        }
+        showFeedback(true);
+        registerSuccess();
+      } else {
+        playWobbleBoing();
+        elem.classList.add('animate-wobble');
+        confusedBakerCat();
+        setTimeout(() => elem.classList.remove('animate-wobble'), 450);
+        showFeedback(false);
+      }
+    }
+
+    /* VARIATION E — Count Decorations */
+    function renderVariationE(container, m) {
+      const cur = I18N[gameState.lang];
+      m.placedCount = 0;
+      const wrapper = document.createElement('div');
+      wrapper.className = 'flex flex-col items-center space-y-2.5 w-full';
+
+      const cakeContainer = document.createElement('div');
+      cakeContainer.style = 'width: 135px; height: 135px; min-width: 135px; min-height: 135px; max-width: 135px; max-height: 135px;';
+      cakeContainer.className = 'relative flex items-center justify-center flex-shrink-0';
+      cakeContainer.innerHTML = `
+        <div class="w-full h-full flex items-center justify-center overflow-hidden">
+          ${renderCakeImg(m.shape)}
+        </div>
+        <div id="countingSlotsArea" class="absolute inset-0 flex items-center justify-center flex-wrap gap-1 p-3">
+        </div>
+      `;
+      wrapper.appendChild(cakeContainer);
+
+      const counterStatus = document.createElement('div');
+      counterStatus.id = 'countStatusPill';
+      counterStatus.className = 'px-3 py-0.5 bg-bakeHoney text-bakeEspresso font-black text-xs sm:text-sm rounded-full border border-white shadow';
+      counterStatus.innerHTML = `0 / ${m.count}`;
+      wrapper.appendChild(counterStatus);
+
+      const supplyBox = document.createElement('div');
+      supplyBox.className = 'flex items-center space-x-2.5 p-1.5 bg-red-50 rounded-2xl border-2 border-bakeRed';
+
+      const decorItem = document.createElement('div');
+      decorItem.style = 'width: 58px; height: 58px; min-width: 58px; min-height: 58px; max-width: 58px; max-height: 58px;';
+      decorItem.className = 'bg-white rounded-2xl p-1 border-2 border-bakeRed shadow-bake-btn cursor-pointer candy-btn flex items-center justify-center flex-shrink-0 touch-none overflow-hidden';
+      decorItem.innerHTML = renderToppingImg(m.topping);
+
+      makeDraggableAndTappable(decorItem, cakeContainer, () => addCountingTopping(m, cakeContainer));
+      supplyBox.appendChild(decorItem);
+
+      const resetBtn = document.createElement('button');
+      resetBtn.className = 'px-2.5 py-1 bg-gray-100 hover:bg-gray-200 text-bakeEspresso font-extrabold text-xs rounded-xl candy-btn border border-gray-300';
+      resetBtn.textContent = cur.removeBtn;
+      resetBtn.onclick = () => {
+        m.placedCount = 0;
+        document.getElementById('countingSlotsArea').innerHTML = '';
+        counterStatus.textContent = `0 / ${m.count}`;
+        playPop();
+      };
+      supplyBox.appendChild(resetBtn);
+
+      wrapper.appendChild(supplyBox);
+      container.appendChild(wrapper);
+    }
+
+    function addCountingTopping(m, cakeContainer) {
+      if (m.placedCount >= m.count) return;
+
+      m.placedCount++;
+      playPop();
+
+      const slots = document.getElementById('countingSlotsArea');
+      const itemNode = document.createElement('div');
+      itemNode.style = 'width: 32px; height: 32px; max-width: 32px; max-height: 32px;';
+      itemNode.className = 'animate-celebrate overflow-hidden flex items-center justify-center';
+      itemNode.innerHTML = renderToppingImg(m.topping);
+      slots.appendChild(itemNode);
+
+      document.getElementById('countStatusPill').textContent = `${m.placedCount} / ${m.count}`;
+
+      if (m.placedCount === m.count) {
+        gameState.totalAttemptsInSession++;
+        playChime(783.99);
+        cakeContainer.classList.add('animate-celebrate');
+        showFeedback(true);
+        registerSuccess();
+      }
+    }
+
+    /* VARIATION F — Which Decoration Is Missing? */
+    function renderVariationF(container, m) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'flex flex-col items-center space-y-4 w-full';
+
+      const patternRow = document.createElement('div');
+      patternRow.className = 'flex items-center space-x-2 bg-red-50 p-2 sm:p-3 rounded-2xl border-2 border-bakeRed shadow-bake-btn max-w-full overflow-x-auto';
+
+      for (let i = 0; i < 4; i++) {
+        const slot = document.createElement('div');
+        slot.style = 'width: 52px; height: 52px; min-width: 52px; min-height: 52px; max-width: 52px; max-height: 52px;';
+        if (i === 2) {
+          slot.id = 'missingSlotTarget';
+          slot.className = 'bg-white rounded-2xl border-2 border-dashed border-bakeRed flex items-center justify-center text-bakeDarkRed font-black text-xl shadow-inner flex-shrink-0';
+          slot.textContent = '?';
+        } else {
+          slot.className = 'bg-white rounded-2xl p-1 border border-bakeRed flex items-center justify-center flex-shrink-0 overflow-hidden';
+          slot.innerHTML = renderToppingImg(m.topping);
+        }
+        patternRow.appendChild(slot);
+      }
+      wrapper.appendChild(patternRow);
+
+      const choices = document.createElement('div');
+      choices.className = 'flex items-center justify-center gap-2';
+
+      const missingSlotElem = document.getElementById('missingSlotTarget') || patternRow;
+
+      m.toppingChoices.forEach(tKey => {
+        const choiceBtn = document.createElement('div');
+        choiceBtn.style = 'width: 58px; height: 58px; min-width: 58px; min-height: 58px; max-width: 58px; max-height: 58px;';
+        choiceBtn.className = 'bg-white rounded-2xl p-1 border-2 border-bakeRed shadow-bake-btn cursor-pointer candy-btn flex items-center justify-center flex-shrink-0 touch-none overflow-hidden';
+        choiceBtn.innerHTML = renderToppingImg(tKey);
+
+        makeDraggableAndTappable(choiceBtn, missingSlotElem, () => handleMissingChoice(tKey, choiceBtn, m.topping));
+        choices.appendChild(choiceBtn);
+      });
+
+      wrapper.appendChild(choices);
+      container.appendChild(wrapper);
+    }
+
+    function handleMissingChoice(selectedTopping, elem, correctTopping) {
+      gameState.totalAttemptsInSession++;
+      if (selectedTopping === correctTopping) {
+        playChime(660);
+        const missingSlot = document.getElementById('missingSlotTarget');
+        if (missingSlot) {
+          missingSlot.innerHTML = renderToppingImg(correctTopping);
+          missingSlot.classList.remove('border-dashed');
+          missingSlot.classList.add('animate-celebrate');
+        }
+        showFeedback(true);
+        registerSuccess();
+      } else {
+        playWobbleBoing();
+        elem.classList.add('animate-wobble');
+        confusedBakerCat();
+        setTimeout(() => elem.classList.remove('animate-wobble'), 450);
+        showFeedback(false);
+      }
+    }
+
+    /* VARIATION G — Multi-Step Cake Order */
+    function renderVariationG(container, m) {
+      if (!m.step) m.step = 1;
+      const wrapper = document.createElement('div');
+      wrapper.id = 'fullOrderContainer';
+      wrapper.className = 'flex flex-col items-center space-y-3 w-full';
+
+      renderStepG(wrapper, m);
+      container.appendChild(wrapper);
+    }
+
+    function renderStepG(wrapper, m) {
+      wrapper.innerHTML = '';
+      const cur = I18N[gameState.lang];
+
+      const prog = document.createElement('div');
+      prog.className = 'flex items-center space-x-1.5 text-xs font-extrabold text-bakeDarkRed mb-1';
+      prog.innerHTML = `
+        <span class="${m.step >= 1 ? 'text-bakeRed font-black' : 'text-gray-400'}">${cur.stepGProgress[0]}</span> &gt;
+        <span class="${m.step >= 2 ? 'text-bakeRed font-black' : 'text-gray-400'}">${cur.stepGProgress[1]}</span> &gt;
+        <span class="${m.step >= 3 ? 'text-bakeRed font-black' : 'text-gray-400'}">${cur.stepGProgress[2]}</span>
+      `;
+      wrapper.appendChild(prog);
+
+      if (m.step === 1) {
+        const header = document.createElement('p');
+        header.className = 'font-bold text-bakeEspresso text-xs sm:text-sm';
+        header.textContent = cur.missions.pickShape(cur.shapes[m.shape]);
+        wrapper.appendChild(header);
+
+        const choices = document.createElement('div');
+        choices.className = 'flex gap-2 flex-wrap justify-center';
+        m.shapeChoices.forEach(sKey => {
+          const b = document.createElement('div');
+          b.style = 'width: 64px; height: 64px; min-width: 64px; min-height: 64px; max-width: 64px; max-height: 64px;';
+          b.className = 'bg-white rounded-2xl p-1 border-2 border-bakeRed shadow-bake-btn cursor-pointer candy-btn flex-shrink-0 touch-none overflow-hidden';
+          b.innerHTML = renderCakeImg(sKey);
+          
+          makeDraggableAndTappable(b, wrapper, () => {
+            if (sKey === m.shape) {
+              playChime(587);
+              m.step = 2;
+              renderStepG(wrapper, m);
+            } else {
+              playWobbleBoing();
+              b.classList.add('animate-wobble');
+              confusedBakerCat();
+              setTimeout(() => b.classList.remove('animate-wobble'), 450);
+            }
+          });
+          choices.appendChild(b);
+        });
+        wrapper.appendChild(choices);
+
+      } else if (m.step === 2) {
+        const ovenBox = document.createElement('div');
+        ovenBox.style = 'width: 210px; max-width: 85vw; height: 180px;';
+        ovenBox.className = 'bg-white border-4 border-bakeRed rounded-3xl p-2.5 flex flex-col items-center justify-between shadow-bake-3d';
+        ovenBox.innerHTML = `
+          <div style="width: 100%; height: 110px;" class="bg-gradient-to-b from-amber-950 to-[#2A1810] rounded-2xl flex items-center justify-center p-2">
+            <div style="width: 70px; height: 70px; max-width: 70px; max-height: 70px;" class="animate-pulse overflow-hidden">
+              ${renderCakeImg(m.shape, false)}
+            </div>
+          </div>
+          <button id="stepGBakeBtn" class="py-1 px-5 bg-bakeRed hover:bg-red-600 text-white font-black text-sm rounded-2xl border border-white shadow-bake-btn candy-btn">
+            ${cur.bakeBtn}
+          </button>
+        `;
+        wrapper.appendChild(ovenBox);
+
+        ovenBox.querySelector('#stepGBakeBtn').onclick = () => {
+          playOvenDing();
+          m.step = 3;
+          setTimeout(() => renderStepG(wrapper, m), 500);
+        };
+
+      } else if (m.step === 3) {
+        const cakeDisplay = document.createElement('div');
+        cakeDisplay.id = 'stepGFullCakeTarget';
+        cakeDisplay.style = 'width: 130px; height: 130px; min-width: 130px; min-height: 130px; max-width: 130px; max-height: 130px;';
+        cakeDisplay.className = 'relative flex items-center justify-center flex-shrink-0';
+        cakeDisplay.innerHTML = `
+          <div class="w-full h-full overflow-hidden">
+            ${renderCakeImg(m.shape, true)}
+          </div>
+          <div id="fullCakeToppingSlot" class="absolute inset-0 flex items-center justify-center p-1">
+            <span class="text-[9px] font-black text-bakeDarkRed bg-red-100/90 px-2 py-0.5 rounded-full border border-bakeRed">
+              + ${cur.toppings[m.topping]}
+            </span>
+          </div>
+        `;
+        wrapper.appendChild(cakeDisplay);
+
+        const choices = document.createElement('div');
+        choices.className = 'flex gap-2 mt-2 flex-wrap justify-center';
+        m.toppingChoices.forEach(tKey => {
+          const b = document.createElement('div');
+          b.style = 'width: 58px; height: 58px; min-width: 58px; min-height: 58px; max-width: 58px; max-height: 58px;';
+          b.className = 'bg-white rounded-2xl p-1 border-2 border-bakeRed shadow-bake-btn cursor-pointer candy-btn flex-shrink-0 touch-none overflow-hidden';
+          b.innerHTML = renderToppingImg(tKey);
+          
+          makeDraggableAndTappable(b, cakeDisplay, () => {
+            if (tKey === m.topping) {
+              playChime(880);
+              const slot = document.getElementById('fullCakeToppingSlot');
+              if (slot) {
+                slot.innerHTML = renderToppingImg(m.topping);
+                slot.classList.add('animate-celebrate');
+              }
+              showFeedback(true);
+              registerSuccess();
+            } else {
+              playWobbleBoing();
+              b.classList.add('animate-wobble');
+              confusedBakerCat();
+              setTimeout(() => b.classList.remove('animate-wobble'), 450);
+            }
+          });
+          choices.appendChild(b);
+        });
+        wrapper.appendChild(choices);
+      }
+    }
+  </script>
+
+  <script>
+    /* ==============================================================
+       FEEDBACK, SCORING & CELEBRATION
+       ============================================================== */
+    function showFeedback(isCorrect) {
+      const pill = document.getElementById('feedbackPill');
+      const cur = I18N[gameState.lang];
+      if (isCorrect) {
+        pill.textContent = cur.correctFeedback;
+        pill.className = 'absolute top-3 px-5 py-1.5 rounded-full font-black text-sm sm:text-base transition-all duration-300 z-40 bg-bakeGreen text-white border-2 border-white shadow-bake-btn opacity-100 transform translate-y-0';
+      } else {
+        pill.textContent = cur.tryAgain;
+        pill.className = 'absolute top-3 px-5 py-1.5 rounded-full font-black text-sm sm:text-base transition-all duration-300 z-40 bg-bakeRed text-white border-2 border-white shadow-bake-btn opacity-100 transform translate-y-0';
+      }
+
+      setTimeout(() => {
+        pill.classList.add('opacity-0', '-translate-y-4');
+      }, 1000);
+    }
+
+    function registerSuccess() {
+      gameState.score += 10;
+      gameState.correctInSession++;
+      document.getElementById('scoreDisplay').textContent = gameState.score;
+
+      celebrateBakerCat();
+
+      setTimeout(() => {
+        loadNewMission();
+      }, 1100);
+    }
+
+    function celebrateBakerCat() {
+      const mascot = document.getElementById('catReactionMascot');
+      const mascotImg = document.getElementById('mascotReactionImg');
+      if (mascot && mascotImg) {
+        mascotImg.src = ASSETS.cats.celebrate;
+        mascot.classList.add('animate-celebrate');
+        setTimeout(() => {
+          mascot.classList.remove('animate-celebrate');
+          mascotImg.src = ASSETS.cats.avatar;
+        }, 1000);
+      }
+    }
+
+    function confusedBakerCat() {
+      const mascot = document.getElementById('catReactionMascot');
+      const mascotImg = document.getElementById('mascotReactionImg');
+      if (mascot && mascotImg) {
+        mascotImg.src = ASSETS.cats.thinking;
+        mascot.classList.add('animate-wobble');
+        setTimeout(() => {
+          mascot.classList.remove('animate-wobble');
+          mascotImg.src = ASSETS.cats.avatar;
+        }, 900);
+      }
+    }
+
+    function meowCelebration() {
+      playChime(660);
+      const cat = document.getElementById('heroCatWrapper');
+      const catImg = document.getElementById('homeCatImg');
+      if (cat && catImg) {
+        catImg.src = ASSETS.cats.celebrate;
+        cat.classList.add('animate-celebrate');
+        setTimeout(() => {
+          cat.classList.remove('animate-celebrate');
+          catImg.src = ASSETS.cats.hero;
+        }, 1000);
+      }
+    }
+
+    function skipOrNextTaskCheat() {
+      playChime(523.25);
+      showFeedback(true);
+      registerSuccess();
+    }
+
+    function speakInstruction() {
+      const promptText = document.getElementById('missionTextPrompt').textContent;
+      if ('speechSynthesis' in window) {
+        try {
+          window.speechSynthesis.cancel();
+          const ut = new SpeechSynthesisUtterance(promptText);
+          ut.lang = gameState.lang === 'ms' ? 'ms-MY' : 'en-US';
+          ut.rate = 0.9;
+          window.speechSynthesis.speak(ut);
+        } catch (e) {
+          playChime(660);
+        }
+      } else {
+        playChime(660);
+      }
+    }
+
+    function completeSession() {
+      gameState.stats.gamesPlayed++;
+      gameState.stats.missionsCompleted += gameState.correctInSession;
+      gameState.stats.correctAnswers += gameState.correctInSession;
+      gameState.stats.totalAttempts += gameState.totalAttemptsInSession;
+      if (gameState.score > gameState.stats.bestScore) {
+        gameState.stats.bestScore = gameState.score;
+      }
+
+      logActivity(
+        `Menamatkan sesi dengan skor ${gameState.score}!`,
+        `Finished session with score ${gameState.score}!`
+      );
+      saveStateData();
+      navigateTo('result');
+    }
+
+    function renderResultStats() {
+      document.getElementById('finalScoreVal').textContent = gameState.score;
+      document.getElementById('finalMissionsVal').textContent = gameState.correctInSession;
+
+      const accuracy = gameState.totalAttemptsInSession > 0
+        ? Math.round((gameState.correctInSession / gameState.totalAttemptsInSession) * 100)
+        : 100;
+      document.getElementById('finalAccuracyVal').textContent = `${accuracy}%`;
+    }
+
+    function playAgain() {
+      startSession(gameState.sessionTarget || 5);
+    }
+
+    function renderProfileStats() {
+      const cur = I18N[gameState.lang];
+      document.getElementById('profStudentNameDisp').textContent = gameState.studentName || cur.notSet;
+      document.getElementById('profFamCodeDisp').textContent = gameState.familyCode || cur.blank;
+
+      document.getElementById('statPlayedVal').textContent = gameState.stats.gamesPlayed;
+      document.getElementById('statMissionsVal').textContent = gameState.stats.missionsCompleted;
+      document.getElementById('statBestScoreVal').textContent = gameState.stats.bestScore;
+
+      const acc = gameState.stats.totalAttempts > 0
+        ? Math.round((gameState.stats.correctAnswers / gameState.stats.totalAttempts) * 100)
+        : 100;
+      document.getElementById('statAccVal').textContent = `${acc}%`;
+
+      const actBox = document.getElementById('recentActivityBox');
+      actBox.innerHTML = '';
+      if (gameState.recentActivity.length === 0) {
+        actBox.innerHTML = `<p>${cur.noActivity}</p>`;
+      } else {
+        gameState.recentActivity.forEach(act => {
+          const p = document.createElement('p');
+          p.textContent = gameState.lang === 'ms' ? act.ms : act.en;
+          actBox.appendChild(p);
+        });
+      }
+    }
+
+    function saveStudentProfile() {
+      const input = document.getElementById('studentNameInput').value.trim();
+      gameState.studentName = input;
+      saveStateData();
+      playPop();
+      navigateTo('playerProfile');
+    }
+
+    function saveFamilyCode() {
+      const input = document.getElementById('familyCodeInput').value.trim().toUpperCase();
+      gameState.familyCode = input;
+      saveStateData();
+      playPop();
+      navigateTo('playerProfile');
+    }
+
+    /* COLLECTION GALLERY INSPECTION */
+    let currentCollectionCategory = 'cakes';
+
+    function filterCollection(category) {
+      currentCollectionCategory = category;
+      playPop();
+      const gallery = document.getElementById('collectionGallery');
+      gallery.innerHTML = '';
+      const cur = I18N[gameState.lang];
+
+      ['tabCakes', 'tabToppings', 'tabTools'].forEach(t => {
+        document.getElementById(t).className = 'px-3 py-1 bg-gray-100 text-bakeEspresso font-black text-xs rounded-xl border border-gray-300 shadow candy-btn';
+      });
+
+      if (category === 'cakes') {
+        document.getElementById('tabCakes').className = 'px-3 py-1 bg-bakeRed text-white font-black text-xs rounded-xl border border-white shadow candy-btn';
+        SHAPE_KEYS.forEach(shapeKey => {
+          const card = document.createElement('div');
+          card.className = 'bg-white rounded-2xl p-2 border-2 border-bakeRed flex flex-col items-center shadow candy-btn transform hover:scale-105 transition overflow-hidden';
+          card.innerHTML = `
+            <div style="width: 56px; height: 56px; max-width: 56px; max-height: 56px;" class="mb-1.5 flex items-center justify-center overflow-hidden">
+              ${renderCakeImg(shapeKey)}
+            </div>
+            <span class="text-[10px] sm:text-xs font-black text-bakeDarkRed uppercase tracking-wider text-center">
+              ${cur.shapes[shapeKey]}
+            </span>
+          `;
+          gallery.appendChild(card);
+        });
+      } else if (category === 'toppings') {
+        document.getElementById('tabToppings').className = 'px-3 py-1 bg-bakeRed text-white font-black text-xs rounded-xl border border-white shadow candy-btn';
+        TOPPING_KEYS.forEach(topKey => {
+          const card = document.createElement('div');
+          card.className = 'bg-white rounded-2xl p-2 border-2 border-bakeRed flex flex-col items-center shadow candy-btn transform hover:scale-105 transition overflow-hidden';
+          card.innerHTML = `
+            <div style="width: 52px; height: 52px; max-width: 52px; max-height: 52px;" class="mb-1.5 flex items-center justify-center overflow-hidden">
+              ${renderToppingImg(topKey)}
+            </div>
+            <span class="text-[10px] sm:text-xs font-black text-bakeDarkRed uppercase tracking-wider text-center">
+              ${cur.toppings[topKey]}
+            </span>
+          `;
+          gallery.appendChild(card);
+        });
+      } else if (category === 'tools') {
+        document.getElementById('tabTools').className = 'px-3 py-1 bg-bakeRed text-white font-black text-xs rounded-xl border border-white shadow candy-btn';
+        const toolsList = ['oven', 'bowl', 'whisk', 'pipingBag', 'trophy'];
+        toolsList.forEach(tKey => {
+          const card = document.createElement('div');
+          card.className = 'bg-white rounded-2xl p-2 border-2 border-bakeRed flex flex-col items-center shadow candy-btn transform hover:scale-105 transition overflow-hidden';
+          card.innerHTML = `
+            <div style="width: 52px; height: 52px; max-width: 52px; max-height: 52px;" class="mb-1.5 flex items-center justify-center overflow-hidden">
+              ${renderToolImg(tKey)}
+            </div>
+            <span class="text-[10px] sm:text-xs font-black text-bakeDarkRed uppercase tracking-wider text-center">
+              ${cur.tools[tKey]}
+            </span>
+          `;
+          gallery.appendChild(card);
+        });
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadSavedData();
+      updateAllText();
+
+      window.addEventListener('resize', () => {
+        clearConnectLine();
+      });
+    });
+  </script>
+</body>
+</html>
